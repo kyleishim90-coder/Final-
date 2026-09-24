@@ -3580,36 +3580,26 @@ background: rgba(42, 115, 185, 0.9);
                                     font-size: 11px;
                                         line-height: 1.4;
                                         }
-  /* =====================================
-     KYDNO KORE — FLIP ROW BASE
-        ===================================== */
+/* =====================================
+   KYDNO KORE — FLIP ROW FOUNDATION
+      ===================================== */
 
-        .active-flips-panel {
-            width: 100%;
-                display: flex;
-                    justify-content: center;
-                        overflow: hidden;
-                        }
+      .active-flips-list {
+          width: calc(100% - 40px);
+              max-width: 1250px;
+                  margin: 0 auto;
+                      padding: 16px 0 24px;
+                          box-sizing: border-box;
+                          }
 
-                        .active-flips-list {
-                            width: 100%;
-                                max-width: 1100px;
-                                    margin: 0 auto;
-                                        padding: 14px 18px;
-                                            box-sizing: border-box;
-                                            }
+                          .active-flip-card {
+                              width: 100%;
+                                  min-height: 128px;
+                                      box-sizing: border-box;
 
-                                            .active-flip-card {
-                                                width: 100%;
-                                                    min-height: 115px;
-                                                        box-sizing: border-box;
+                                          margin: 0 auto;
+                                              padding: 18px 20px;
 
-                                                            display: flex;
-                                                                align-items: center;
-
-                                                                    margin: 0 auto;
-                                                                        padding: 16px 20px;
-
-                                                                            border-radius: 14px;
-                                                                            }                                      
+                                                  border-radius: 14px;
+                                                  }                                     
                                                                                                                                                                                               
