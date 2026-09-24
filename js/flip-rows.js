@@ -34,8 +34,15 @@ ${Number(flip.total_value || 0).toLocaleString()}
 </div>
 <div class="active-flip-side">
 <div class="active-flip-coin">
-${sideName}
-</div>
+    <img
+            src="${
+                        flip.host_side === "tails"
+                                        ? "assets/kydno_kore_tails_coin.png"
+                                                        : "assets/kydno_kore_heads_coin.png"
+                                                                }"
+                                                                        alt="${sideName}"
+                                                                            >
+                                                                            </div>
 </div>
 <div class="active-flip-range">
 <span>Join Range</span>
