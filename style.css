@@ -3592,14 +3592,18 @@ background: rgba(42, 115, 185, 0.9);
                           box-sizing: border-box;
                           }
 
-                          .active-flip-card {
-                              width: 100%;
-                                  min-height: 128px;
-                                      box-sizing: border-box;
+                                .active-flip-card {
+                                        width: 100%;
+                                            min-height: 138px;
+                                                box-sizing: border-box;
 
-                                          margin: 0 auto;
-                                              padding: 18px 20px;
+                                                    margin: 0 auto;
+                                                        padding: 18px 20px;
 
-                                                  border-radius: 14px;
-                                                  }                                     
+                                                            border-radius: 14px;
+
+                                                                position: relative;
+                                                                    left: 5px;
+                                                                    }
+                                                
                                                                                                                                                                                               
