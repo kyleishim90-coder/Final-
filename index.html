@@ -6,6 +6,7 @@
 <title>Kydno Kore Test</title>
 <link href="style.css" rel="stylesheet"/>
 <link href="css/admin-panels.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/coinflip-animation.css">
 <style id="admin-panel-redesign">
 
 /* ===== ADMIN PANEL REDESIGN ONLY ===== */
@@ -1698,6 +1699,29 @@ CREATE FLIP PANEL
 </div>
 </div>
 <!-- Flip list -->
+ <!-- Kydno Kore Coinflip Animation -->
+<div id="kydno-coinflip-animation" class="kydno-coinflip-animation" style="display: flex;">
+
+    <div class="kydno-slot-machine">
+    
+            <div class="kydno-slot-window">
+            
+                        <div class="kydno-reel" id="kydno-reel-1"></div>
+                                    <div class="kydno-reel" id="kydno-reel-2"></div>
+                                                <div class="kydno-reel" id="kydno-reel-3"></div>
+                                                            <div class="kydno-reel" id="kydno-reel-4"></div>
+                                                                        <div class="kydno-reel" id="kydno-reel-5"></div>
+                                                                        
+                                                                                </div>
+                                                                                
+                                                                                        <div class="kydno-slot-lever">
+                                                                                                    <div class="kydno-lever-handle"></div>
+                                                                                                                <div class="kydno-lever-ball"></div>
+                                                                                                                        </div>
+                                                                                                                        
+                                                                                                                            </div>
+                                                                                                                            
+                                                                                                                            </div>
 <div class="active-flips-list" id="active-flips-list">
 <!-- Empty state -->
 <div class="flips-empty-state">
@@ -4866,5 +4890,6 @@ document.addEventListener("click", function(event) {
 <script src="js/coinflip.js"></script>
 <script src="js/flip-rows.js"></script>
 <script src="fixes.js"></script>
+<script src="js/coinflip-animation.js"></script>
 </body>
 </html>
