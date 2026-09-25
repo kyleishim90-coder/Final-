@@ -1,58 +1,58 @@
 // =========================================================
-// KYDNO KORE - COINFLIP ANIMATION
+// KYDNO KORE - CIRCULAR COIN REEL
+// Step 1: Build the reel structure
 // =========================================================
 
-function setupKydnoCoinReels() {
-    const reels = [
-            document.getElementById("kydno-reel-1"),
-                    document.getElementById("kydno-reel-2"),
-                            document.getElementById("kydno-reel-3"),
-                                    document.getElementById("kydno-reel-4"),
-                                            document.getElementById("kydno-reel-5")
-                                                ];
+function createKydnoCircularReel(reelElement) {
+    if (!reelElement) return;
 
-                                                    reels.forEach((reel, index) => {
-                                                            if (!reel) return;
+        reelElement.innerHTML = "";
 
-                                                                    const coin = document.createElement("img");
+            const reel = document.createElement("div");
+                reel.className = "kydno-circular-reel";
 
-                                                                            coin.src = "assets/kydno_kore_heads_coin.png";
-                                                                                    coin.alt = "Kydno Kore Heads Coin";
-                                                                                            coin.className = "kydno-reel-coin";
+                    const track = document.createElement("div");
+                        track.className = "kydno-reel-track";
 
-                                                                                                    reel.appendChild(coin);
-                                                                                                        });
-                                                                                                        }
+                            const sides = [
+                                    "heads",
+                                            "tails",
+                                                    "heads",
+                                                            "tails",
+                                                                    "heads",
+                                                                            "tails",
+                                                                                    "heads",
+                                                                                            "tails"
+                                                                                                ];
 
-                                                                                                       function startKydnoCoinReels() {
-                                                                                                            const reels = [
-                                                                                                                    document.getElementById("kydno-reel-1"),
-                                                                                                                            document.getElementById("kydno-reel-2"),
-                                                                                                                                    document.getElementById("kydno-reel-3"),
-                                                                                                                                            document.getElementById("kydno-reel-4"),
-                                                                                                                                                    document.getElementById("kydno-reel-5")
-                                                                                                                                                        ];
+                                                                                                    sides.forEach((side) => {
+                                                                                                            const coin = document.createElement("img");
 
-                                                                                                                                                            reels.forEach((reel) => {
-                                                                                                                                                                    if (!reel) return;
+                                                                                                                    coin.className = "kydno-reel-coin";
 
-                                                                                                                                                                            const coin = reel.querySelector(".kydno-reel-coin");
-                                                                                                                                                                                    if (!coin) return;
+                                                                                                                            coin.src = side === "heads"
+                                                                                                                                        ? "assets/kydno_kore_heads_coin.png"
+                                                                                                                                                    : "assets/kydno_kore_tails_coin.png";
 
-                                                                                                                                                                                            setInterval(() => {
-                                                                                                                                                                                                        const showingHeads = coin.dataset.side !== "tails";
+                                                                                                                                                            coin.alt = side === "heads"
+                                                                                                                                                                        ? "Kydno Kore Heads Coin"
+                                                                                                                                                                                    : "Kydno Kore Tails Coin";
 
-                                                                                                                                                                                                                    coin.src = showingHeads
-                                                                                                                                                                                                                                    ? "assets/kydno_kore_tails_coin.png"
-                                                                                                                                                                                                                                                    : "assets/kydno_kore_heads_coin.png";
+                                                                                                                                                                                            coin.dataset.side = side;
 
-                                                                                                                                                                                                                                                                coin.dataset.side = showingHeads ? "tails" : "heads";
-                                                                                                                                                                                                                                                                        }, 160);
-                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                            setupKydnoCoinReels();
-                                                                                                                                                                                                                                                                            startKydnoCoinReels();
+                                                                                                                                                                                                    track.appendChild(coin);
+                                                                                                                                                                                                        });
 
-                                                                                                                                                                                                                                                                            
-                                                                                                       
-                                                                                                        
+                                                                                                                                                                                                            reel.appendChild(track);
+                                                                                                                                                                                                                reelElement.appendChild(reel);
+                                                                                                                                                                                                                }
+
+
+                                                                                                                                                                                                                // ---------------------------------------------------------
+                                                                                                                                                                                                                // TEMPORARY TEST
+                                                                                                                                                                                                                // Only build the first reel for now.
+                                                                                                                                                                                                                // ---------------------------------------------------------
+
+                                                                                                                                                                                                                const firstKydnoReel = document.getElementById("kydno-reel-1");
+
+                                                                                                                                                                                                                createKydnoCircularReel(firstKydnoReel);
