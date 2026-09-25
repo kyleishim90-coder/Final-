@@ -2693,12 +2693,12 @@ async function loadActiveFlips() {
 
         const isHost = currentUser?.id === flip.host_id;
 
-        const adminButton = isAdmin && !isHost
+        const adminButton = isAdmin
             ? `<button type="button" class="admin-cancel-active-flip-button" data-flip-id="${flip.id}">Admin Cancel Flip</button>`
                 : "";
 
                 const actionMarkup = isHost
-                    ? `<button type="button" class="cancel-active-flip-button" data-flip-id="${flip.id}">Cancel Flip</button>`
+                    ? (isAdmin ? adminButton : "")
                         : `<button type="button" class="join-active-flip-button" data-flip-id="${flip.id}" data-flip-total-value="${totalValue}">Join Flip</button>${adminButton}`;
 
         const flipCard = document.createElement("div");
