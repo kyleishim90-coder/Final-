@@ -1695,7 +1695,6 @@ CREATE FLIP PANEL
 <div class="active-flips-header">
 <div>
 <h2>Active Flips</h2>
-<span id="active-flips-count">0 active</span>
 </div>
 </div>
 <!-- Flip list -->
@@ -2619,7 +2618,6 @@ console.log("Selected flip side:", selectedFlipSide);
 // =====================================
 
 const activeFlipsList = document.getElementById("active-flips-list");
-const activeFlipsCount = document.getElementById("active-flips-count");
 
 async function loadActiveFlips() {
     if (!activeFlipsList) return;
@@ -2637,9 +2635,7 @@ async function loadActiveFlips() {
 
     activeFlipsList.innerHTML = "";
     const waitingFlips = flips || [];
-    if (activeFlipsCount) activeFlipsCount.textContent = `${waitingFlips.length} active`;
-
-    if (!waitingFlips.length) {
+ if (!waitingFlips.length) {
         activeFlipsList.innerHTML = `
             <div class="flips-empty-state">
                 <div class="flips-empty-icon">✦</div>
