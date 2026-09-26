@@ -365,4 +365,46 @@
                                                                                                                                                                                                                                                                                 width: 48px;
                                                                                                                                                                                                                                                                                         height: 48px;
                                                                                                                                                                                                                                                                                             }
-                                                                                                                                                                                                                                                                                            }                                                                                                                                 
+                                                                                                                                                                                                                                                                                            }      
+  /* =========================================================
+     LANDED RESULT COIN
+        ========================================================= */
+
+        .kydno-landed-coin {
+            position: absolute;
+
+                width: 112px;
+                    height: 112px;
+
+                        left: 50%;
+                            top: 50%;
+
+                                transform:
+                                        translate(-50%, -50%)
+                                                scale(0.65);
+
+                                                    object-fit: contain;
+
+                                                        z-index: 30;
+
+                                                            pointer-events: none;
+
+                                                                opacity: 0;
+
+                                                                    filter:
+                                                                            drop-shadow(
+                                                                                        0 7px 8px rgba(0, 0, 0, 0.28)
+                                                                                                );
+
+                                                                                                    transition:
+                                                                                                            opacity 0.18s ease,
+                                                                                                                    transform 0.22s cubic-bezier(0.2, 1.4, 0.4, 1);
+                                                                                                                    }
+
+                                                                                                                    .kydno-landed-coin.show {
+                                                                                                                        opacity: 1;
+
+                                                                                                                            transform:
+                                                                                                                                    translate(-50%, -50%)
+                                                                                                                                            scale(1);
+                                                                                                                                            }                                                                                                                                                                                                                                                                                                                                                                                                                     
