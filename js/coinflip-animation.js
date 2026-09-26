@@ -66,3 +66,36 @@ function createKydnoCircularReel(reelElement) {
                                                                                                                                                                                                                                                                                 const firstKydnoReel = document.getElementById("kydno-reel-1");
 
                                                                                                                                                                                                                                                                                 createKydnoCircularReel(firstKydnoReel);
+ // ---------------------------------------------------------
+ // STEP 5: TEST REEL SPIN
+ // ---------------------------------------------------------
+
+ function spinKydnoTestReel() {
+     const track = document.querySelector("#kydno-reel-1 .kydno-reel-track");
+
+         if (!track) return;
+
+             let rotation = 0;
+
+                 const spinInterval = setInterval(() => {
+                         rotation += 12;
+
+                                 track.style.transform = `
+                                             translate(-50%, -50%)
+                                                         rotateX(${rotation}deg)
+                                                                 `;
+                                                                     }, 30);
+
+                                                                         setTimeout(() => {
+                                                                                 clearInterval(spinInterval);
+                                                                                     }, 2500);
+                                                                                     }
+
+
+                                                                                     // ---------------------------------------------------------
+                                                                                     // TEMPORARY TEST
+                                                                                     // ---------------------------------------------------------
+
+                                                                                     setTimeout(() => {
+                                                                                         spinKydnoTestReel();
+                                                                                         }, 1000);                                                                                                                                                                                                                                                                         
