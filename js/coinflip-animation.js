@@ -24,51 +24,25 @@ const KYDNO_COIN_ASSETS = {
                                         // CREATE ONE CLEAN 3D COIN
                                         // =========================================================
 
-                                        function createKydno3DCoin(side) {
+function createKydno3DCoin(side) {
 
-                                            const coin = document.createElement("div");
+        const coin = document.createElement("img");
 
-                                                coin.className = "kydno-3d-coin";
-                                                    coin.dataset.side = side;
+            coin.className = "kydno-3d-coin";
 
-                                                        // Metallic circular body
-                                                            const body = document.createElement("div");
-                                                                body.className = "kydno-coin-body";
+                coin.src =
+                        KYDNO_COIN_ASSETS[side];
 
-                                                                    // Front face
-                                                                        const front = document.createElement("img");
+                            coin.alt =
+                                    side === "heads"
+                                                ? "Kydno Kore Heads Coin"
+                                                            : "Kydno Kore Tails Coin";
 
-                                                                            front.className =
-                                                                                    "kydno-coin-face kydno-coin-front";
+                                                                coin.dataset.side = side;
 
-                                                                                        front.src =
-                                                                                                KYDNO_COIN_ASSETS[side];
+                                                                    return coin;
+                                                                    }
 
-                                                                                                    front.alt =
-                                                                                                            side === "heads"
-                                                                                                                        ? "Kydno Kore Heads Coin"
-                                                                                                                                    : "Kydno Kore Tails Coin";
-
-
-                                                                                                                                        // Back face
-                                                                                                                                            const back = document.createElement("img");
-
-                                                                                                                                                back.className =
-                                                                                                                                                        "kydno-coin-face kydno-coin-back";
-
-                                                                                                                                                            back.src =
-                                                                                                                                                                    KYDNO_COIN_ASSETS[side];
-
-                                                                                                                                                                        back.alt = "";
-
-
-                                                                                                                                                                            body.appendChild(front);
-                                                                                                                                                                                body.appendChild(back);
-
-                                                                                                                                                                                    coin.appendChild(body);
-
-                                                                                                                                                                                        return coin;
-                                                                                                                                                                                        }
 
 
                                                                                                                                                                                         // =========================================================
