@@ -99,7 +99,8 @@
                         left: 50%;
                             top: 50%;
                                 transform:
-                                        translate(-50%, -50%);
+                                    translate(-50%, -50%)
+                                        translateZ(-18px);
                                             transform-style: preserve-3d;
                                                 will-change: transform;
                                                 }
@@ -329,13 +330,13 @@
                                                                                                     }
 
                                                                                                         .kydno-circular-reel {
-                                                                                                                width: 210px;
-                                                                                                                        height: 210px;
+                                                                                                                width: 230px;
+                                                                                                                height: 230px;
                                                                                                                             }
 
                                                                                                                                 .kydno-reel-track {
-                                                                                                                                        width: 210px;
-                                                                                                                                                height: 210px;
+                                                                                                                                        width: 230px;
+                                                                                                                                        height: 230px;
                                                                                                                                                     }
 
                                                                                                                                                         .kydno-3d-coin {

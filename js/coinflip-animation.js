@@ -96,7 +96,7 @@ const KYDNO_COIN_ASSETS = {
 
 
                                                                                                                                                                                                                                                     // More spacing between coins.
-                                                                                                                                                                                                                                                        const radius = 145;
+                                                                                                                                                                                                                                                        const radius = 115;
 
 
                                                                                                                                                                                                                                                             KYDNO_REEL_SIDES.forEach(
