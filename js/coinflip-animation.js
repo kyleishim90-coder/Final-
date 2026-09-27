@@ -157,93 +157,97 @@ const KYDNO_COIN_ASSETS = {
                         "heads"
                         ];
 
-                        function getKydnoTargetAngle(side) {
+       // =========================================================
+       // VERTICAL FALLING REEL SPIN
+       // =========================================================
 
-                            const index =
-                                    KYDNO_REEL_SIDES.indexOf(side);
+       function spinKydnoReel(
+           track,
+               reelElement,
+                   resultSide,
+                       reelNumber,
+                           duration
+                           ) {
 
-                                        if (index < 0) return 0;
+                               if (!track || !reelElement) return;
 
-                                            return -(
-                                                    (360 / KYDNO_REEL_SIDES.length)
-                                                            * index
-                                                                );
-                                                                }
+                                   const coins =
+                                           Array.from(
+                                                       track.querySelectorAll(".kydno-reel-coin")
+                                                               );
 
-                                                                function spinKydnoReel(
-                                                                        track,
-                                                                            reelElement,
-                                                                                resultSide,
-                                                                                    reelNumber,
-                                                                                        duration
-                                                                                        ) {
+                                                                   if (!coins.length) return;
 
-                                                                                            if (!track || !reelElement) return;
+                                                                       const coinHeight = 82;
+                                                                           const gap = 18;
+                                                                               const step = coinHeight + gap;
 
-                                                                                                const targetAngle =
-                                                                                                        getKydnoTargetAngle(resultSide);
+                                                                                   const startTime = performance.now();
 
-                                                                                                            const fullSpins =
-                                                                                                                    reelNumber === 5 ? 8 : 6;
+                                                                                       function animateReel(currentTime) {
 
-                                                                                                                        const finalRotation =
-                                                                                                                                -(fullSpins * 360) + targetAngle;
+                                                                                               const elapsed =
+                                                                                                           currentTime - startTime;
 
-                                                                                                                                    const startTime = performance.now();
+                                                                                                                   let progress =
+                                                                                                                               elapsed / duration;
 
-                                                                                                                                        function animateReel(currentTime) {
+                                                                                                                                       if (progress > 1) {
+                                                                                                                                                   progress = 1;
+                                                                                                                                                           }
 
-                                                                                                                                                const elapsed = currentTime - startTime;
+                                                                                                                                                                   // Smooth slowdown
+                                                                                                                                                                           const eased =
+                                                                                                                                                                                       1 - Math.pow(1 - progress, 4);
 
-                                                                                                                                                        let progress = elapsed / duration;
+                                                                                                                                                                                               // Keep the reel continuously moving downward.
+                                                                                                                                                                                                       const distance =
+                                                                                                                                                                                                                   eased * step * 18;
 
-                                                                                                                                                                if (progress > 1) {
-                                                                                                                                                                            progress = 1;
-                                                                                                                                                                                    }
+                                                                                                                                                                                                                           track.style.transform =
+                                                                                                                                                                                                                                       `translate(-50%, ${distance}px)`;
 
-                                                                                                                                                                                            // Smooth deceleration toward the final result
-                                                                                                                                                                                                    const eased =
-                                                                                                                                                                                                                1 - Math.pow(1 - progress, 4);
+                                                                                                                                                                                                                                               if (progress < 1) {
 
-                                                                                                                                                                                                                        const rotation =
-                                                                                                                                                                                                                                    finalRotation * eased;
+                                                                                                                                                                                                                                                           requestAnimationFrame(
+                                                                                                                                                                                                                                                                           animateReel
+                                                                                                                                                                                                                                                                                       );
 
-                                                                                                                                                                                                                                            track.style.transform = `
-                                                                                                                                                                                                                                                        translate(-50%, -50%)
-                                                                                                                                                                                                                                                                    rotateX(${rotation}deg)
-                                                                                                                                                                                                                                                                                translateZ(-18px)
-                                                                                                                                                                                                                                                                                        `;
+                                                                                                                                                                                                                                                                                               } else {
 
-                                                                                                                                                                                                                                                                                                if (progress < 1) {
+                                                                                                                                                                                                                                                                                                           // Hide the moving coins.
+                                                                                                                                                                                                                                                                                                                       coins.forEach((coin) => {
+                                                                                                                                                                                                                                                                                                                                       coin.style.opacity = "0";
+                                                                                                                                                                                                                                                                                                                                                   });
 
-                                                                                                                                                                                                                                                                                                            requestAnimationFrame(animateReel);
+                                                                                                                                                                                                                                                                                                                                                               // Show the final result coin.
+                                                                                                                                                                                                                                                                                                                                                                           showKydnoLandedCoin(
+                                                                                                                                                                                                                                                                                                                                                                                           reelElement,
+                                                                                                                                                                                                                                                                                                                                                                                                           resultSide
+                                                                                                                                                                                                                                                                                                                                                                                                                       );
 
-                                                                                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                                                                                                                                                                                                   // Special final-reel effect.
+                                                                                                                                                                                                                                                                                                                                                                                                                                               if (reelNumber === 5) {
 
-                                                                                                                                                                                                                                                                                                                                showKydnoLandedCoin(
-                                                                                                                                                                                                                                                                                                                                                reelElement,
-                                                                                                                                                                                                                                                                                                                                                                resultSide
-                                                                                                                                                                                                                                                                                                                                                                            );
+                                                                                                                                                                                                                                                                                                                                                                                                                                                               reelElement.classList.add(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   "kydno-reel-landed"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   );
 
-                                                                                                                                                                                                                                                                                                                                                                                        if (reelNumber === 5) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   setTimeout(() => {
 
-                                                                                                                                                                                                                                                                                                                                                                                                        reelElement.classList.add(
-                                                                                                                                                                                                                                                                                                                                                                                                                            "kydno-reel-landed"
-                                                                                                                                                                                                                                                                                                                                                                                                                                            );
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       reelElement.classList.remove(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               "kydno-reel-landed"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   );
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }, 350);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                reelElement.classList.remove(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "kydno-reel-landed"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            );
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }, 300);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        requestAnimationFrame(animateReel);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               requestAnimationFrame(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       animateReel
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           );
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }                 
                                                                 
   // =========================================================
   // RUN THE 5 REEL SPIN TEST
@@ -252,16 +256,20 @@ const KYDNO_COIN_ASSETS = {
   function runKydnoSpinTest() {
 
       // Reset the reels first
-          kydnoReelTracks.forEach((track) => {
+         kydnoReelTracks.forEach((track) => {
 
-                  track.style.transition = "none";
+                track.style.transition = "none";
 
-                          track.style.transform = `
-                                      translate(-50%, -50%)
-                                                  rotateX(0deg)
-                                                              translateZ(-18px)
-                                                                      `;
-                                                                          });
+                    track.style.transform =
+                            "translate(-50%, 0px)";
+
+                                track
+                                        .querySelectorAll(".kydno-reel-coin")
+                                                .forEach((coin) => {
+                                                            coin.style.opacity = "1";
+                                                                    });
+                                                                    });
+         
 
                                                                               // Hide previous result coins
                                                                                   kydnoReelTracks.forEach((track, index) => {
