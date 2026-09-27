@@ -303,105 +303,99 @@
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         }
 
+
+
+
 /* =========================================================
    AGGRESSIVE SLOT REEL SNAP
-   ========================================================= */
+      ========================================================= */
 
-/*
-   The JS should add .kydno-reel-snap to a reel when its
-   moving coins reach the target. The snap happens first;
-   the JS can hide the moving coins and show the oversized
-   result coin only after this animation finishes.
-*/
+      .kydno-vertical-track.kydno-reel-snap {
+          animation:
+                  kydno-track-snap
+                          0.42s
+                                  cubic-bezier(0.12, 0.9, 0.18, 1)
+                                          both;
+                                              will-change: transform;
+                                              }
 
-.kydno-reel-snap {
-    animation:
-        kydno-reel-snap
-        0.42s
-        cubic-bezier(0.18, 0.9, 0.22, 1)
-        both;
-    will-change: transform;
-}
+                                              @keyframes kydno-track-snap {
 
-@keyframes kydno-reel-snap {
+                                                  0% {
+                                                          margin-top: 0;
+                                                              }
 
-    0% {
-        transform: translateY(0) scale(1);
-    }
+                                                                  /* Hard brake */
+                                                                      42% {
+                                                                              margin-top: 0;
+                                                                                  }
 
-    /* Hard brake */
-    45% {
-        transform: translateY(0) scale(1.01);
-    }
+                                                                                      /* Aggressive overshoot */
+                                                                                          58% {
+                                                                                                  margin-top: 18px;
+                                                                                                      }
 
-    /* Aggressive overshoot */
-    62% {
-        transform: translateY(10px) scale(1.018);
-    }
+                                                                                                          /* HARD SNAP BACK */
+                                                                                                              74% {
+                                                                                                                      margin-top: -14px;
+                                                                                                                          }
 
-    /* Violent snap backward */
-    78% {
-        transform: translateY(-7px) scale(0.985);
-    }
+                                                                                                                              /* Counter-hit */
+                                                                                                                                  88% {
+                                                                                                                                          margin-top: 6px;
+                                                                                                                                              }
 
-    /* Counter-hit */
-    90% {
-        transform: translateY(3px) scale(1.008);
-    }
-
-    /* Locked into place */
-    100% {
-        transform: translateY(0) scale(1);
-    }
-}
+                                                                                                                                                  /* Locked */
+                                                                                                                                                      100% {
+                                                                                                                                                              margin-top: 0;
+                                                                                                                                                                  }
+                                                                                                                                                                  }
 
 
-/* =========================================================
-   REEL 5 - HARDER FINAL SNAP
-   ========================================================= */
+                                                                                                                                                                  /* =========================================================
+                                                                                                                                                                     REEL 5 - EXTRA DRAMATIC FINAL SNAP
+                                                                                                                                                                        ========================================================= */
 
-.kydno-reel-five-pull {
-    animation:
-        kydno-reel-five-dramatic-pull
-        0.72s
-        cubic-bezier(0.16, 0.9, 0.2, 1)
-        both;
-    will-change: transform;
-}
+                                                                                                                                                                        .kydno-vertical-track.kydno-reel-five-pull {
+                                                                                                                                                                            animation:
+                                                                                                                                                                                    kydno-track-five-snap
+                                                                                                                                                                                            0.72s
+                                                                                                                                                                                                    cubic-bezier(0.10, 0.92, 0.16, 1)
+                                                                                                                                                                                                            both;
+                                                                                                                                                                                                                will-change: transform;
+                                                                                                                                                                                                                }
 
-@keyframes kydno-reel-five-dramatic-pull {
+                                                                                                                                                                                                                @keyframes kydno-track-five-snap {
 
-    0% {
-        transform: translateY(0) scale(1);
-    }
+                                                                                                                                                                                                                    0% {
+                                                                                                                                                                                                                            margin-top: 0;
+                                                                                                                                                                                                                                }
 
-    /* Sudden brake */
-    30% {
-        transform: translateY(2px) scale(1.018);
-    }
+                                                                                                                                                                                                                                    /* Sudden brake */
+                                                                                                                                                                                                                                        30% {
+                                                                                                                                                                                                                                                margin-top: 0;
+                                                                                                                                                                                                                                                    }
 
-    /* Pull past the target */
-    48% {
-        transform: translateY(13px) scale(1.025);
-    }
+                                                                                                                                                                                                                                                        /* Pull PAST target */
+                                                                                                                                                                                                                                                            48% {
+                                                                                                                                                                                                                                                                    margin-top: 25px;
+                                                                                                                                                                                                                                                                        }
 
-    /* Hard snap backward */
-    64% {
-        transform: translateY(-10px) scale(0.978);
-    }
+                                                                                                                                                                                                                                                                            /* Violent snap backward */
+                                                                                                                                                                                                                                                                                64% {
+                                                                                                                                                                                                                                                                                        margin-top: -20px;
+                                                                                                                                                                                                                                                                                            }
 
-    /* Rebound */
-    79% {
-        transform: translateY(5px) scale(1.014);
-    }
+                                                                                                                                                                                                                                                                                                /* Rebound */
+                                                                                                                                                                                                                                                                                                    80% {
+                                                                                                                                                                                                                                                                                                            margin-top: 8px;
+                                                                                                                                                                                                                                                                                                                }
 
-    /* Final lock */
-    100% {
-        transform: translateY(0) scale(1);
-    }
-}
-
-
+                                                                                                                                                                                                                                                                                                                    /* Final lock */
+                                                                                                                                                                                                                                                                                                                        100% {
+                                                                                                                                                                                                                                                                                                                                margin-top: 0;
+                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                    }
 /* =========================================================
    RESULT COIN - STRONGER SLOT IMPACT
    ========================================================= */
