@@ -58,15 +58,31 @@ const KYDNO_COIN_ASSETS = {
                                                                                                  // Lots of coins so the reel can continuously
                                                                                                      // travel downward without running out.
 
-                                                                                                         for (let i = 0; i < 32; i++) {
+                                                                                                         // Create one completely random sequence for this reel
+                                                                                                         const reelCoins = [];
 
-                                                                                                                const side = getRandomKydnoSide();
+                                                                                                         for (let i = 0; i < 50; i++) {
 
-                                                                                                                    const coin =
-                                                                                                                            createKydnoCoin(side);
+                                                                                                             const side = getRandomKydnoSide();
 
-                                                                                                                                track.appendChild(coin);
-                                                                                                                                }
+                                                                                                                 const coin =
+                                                                                                                         createKydnoCoin(side);
+
+                                                                                                                             reelCoins.push(coin);
+
+                                                                                                                                 track.appendChild(coin);
+                                                                                                                                 }
+
+                                                                                                                                 // Duplicate THIS reel's own random sequence.
+                                                                                                                                 // This creates a seamless loop without synchronizing
+                                                                                                                                 // the other four reels.
+                                                                                                                                 reelCoins.forEach((coin) => {
+
+                                                                                                                                     const duplicate =
+                                                                                                                                             coin.cloneNode(true);
+
+                                                                                                                                                 track.appendChild(duplicate);
+                                                                                                                                                 });
                                                                                                          
 
 
