@@ -344,3 +344,59 @@
         transform: translateX(0) scale(1);
     }
 }
+/* =========================================================
+   REEL 5 - DRAMATIC FINAL PULL
+      ========================================================= */
+
+      .kydno-reel-five-pull {
+          animation:
+                  kydno-reel-five-dramatic-pull
+                          0.95s
+                                  cubic-bezier(0.22, 0.8, 0.25, 1)
+                                          both;
+                                          }
+
+                                          @keyframes kydno-reel-five-dramatic-pull {
+
+                                              /* Still spinning normally */
+                                                  0% {
+                                                          transform:
+                                                                      translateY(0)
+                                                                                  scale(1);
+                                                                                      }
+
+                                                                                          /* Sudden braking */
+                                                                                              35% {
+                                                                                                      transform:
+                                                                                                                  translateY(2px)
+                                                                                                                              scale(1.015);
+                                                                                                                                  }
+
+                                                                                                                                      /* Pull backward */
+                                                                                                                                          52% {
+                                                                                                                                                  transform:
+                                                                                                                                                              translateY(-7px)
+                                                                                                                                                                          scale(0.985);
+                                                                                                                                                                              }
+
+                                                                                                                                                                                  /* Hold the tension */
+                                                                                                                                                                                      65% {
+                                                                                                                                                                                              transform:
+                                                                                                                                                                                                          translateY(-5px)
+                                                                                                                                                                                                                      scale(0.99);
+                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                              /* Snap forward */
+                                                                                                                                                                                                                                  82% {
+                                                                                                                                                                                                                                          transform:
+                                                                                                                                                                                                                                                      translateY(5px)
+                                                                                                                                                                                                                                                                  scale(1.025);
+                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                          /* Settle */
+                                                                                                                                                                                                                                                                              100% {
+                                                                                                                                                                                                                                                                                      transform:
+                                                                                                                                                                                                                                                                                                  translateY(0)
+                                                                                                                                                                                                                                                                                                              scale(1);
+                                                                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                                                                  }
