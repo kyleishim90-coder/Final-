@@ -200,12 +200,14 @@ const KYDNO_COIN_ASSETS = {
                                                                                                                                                                            const eased =
                                                                                                                                                                                        1 - Math.pow(1 - progress, 4);
 
-                                                                                                                                                                                               // Keep the reel continuously moving downward.
-                                                                                                                                                                                                       const distance =
-                                                                                                                                                                                                                   eased * step * 18;
+                                                                                                                                                                                                       // Move the coin track upward continuously.
+                                                                                                                                                                                                               // The track starts with coins already inside
+                                                                                                                                                                                                                       // the white reel window.
+                                                                                                                                                                                                                               const distance =
+                                                                                                                                                                                                                                           eased * step * 18;
 
-                                                                                                                                                                                                                           track.style.transform =
-                                                                                                                                                                                                                                       `translate(-50%, ${distance}px)`;
+                                                                                                                                                                                                                                                   track.style.transform =
+                                                                                                                                                                                                                                                               `translate(-50%, ${-distance}px)`;
 
                                                                                                                                                                                                                                                if (progress < 1) {
 
