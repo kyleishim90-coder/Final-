@@ -2986,10 +2986,11 @@ const selectedJoinItemIds = selectedJoinItemButtons
                         console.log("Successful coinflip result:", joinResult);
 
                         const resultSide =
-                            joinResult.side ||
-                                joinResult.result ||
-                                    joinResult.winner_side ||
-                                        joinResult.flip_result;
+                            joinResult.winning_side ||
+                                joinResult.side ||
+                                    joinResult.result ||
+                                        joinResult.winner_side ||
+                                            joinResult.flip_result;
 
                                         if (resultSide) {
                                             window.startKydnoCoinflip(resultSide);
