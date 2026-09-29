@@ -2980,12 +2980,24 @@ const selectedJoinItemIds = selectedJoinItemButtons
                 );
 
                 if (!joinResult) {
-                    return;
-                    }
+                        return;
+                        }
 
-                    console.log("Successful coinflip result:", joinResult);
-                    closeCreateFlipPanel();
-                    return;
+                        console.log("Successful coinflip result:", joinResult);
+
+                        const resultSide =
+                            joinResult.side ||
+                                joinResult.result ||
+                                    joinResult.winner_side ||
+                                        joinResult.flip_result;
+
+                                        if (resultSide) {
+                                            window.startKydnoCoinflip(resultSide);
+                                            }
+
+                                            closeCreateFlipPanel();
+                                            return;
+                
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }
 
