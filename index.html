@@ -2984,6 +2984,7 @@ const selectedJoinItemIds = selectedJoinItemButtons
                         }
 
                         console.log("Successful coinflip result:", joinResult);
+                        await loadActiveFlips();
 
                         const resultSide =
                             joinResult.winning_side ||

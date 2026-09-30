@@ -181,10 +181,12 @@ function spinKydnoReel(track, reelElement, resultSide, reelNumber, duration) {
 
     currentY += speed;
 
-    // Loop the 50-coin sequence.
-    if (currentY > cycleHeight) {
-      currentY -= cycleHeight;
-    }
+    currentY -= speed;
+
+    // Loop the 50-coin sequence seamlessly.
+    if (currentY < -cycleHeight) {
+      currentY += cycleHeight;
+      }
 
     track.style.transform = `translate(-50%, ${currentY}px)`;
 
@@ -286,6 +288,21 @@ function runKydnoSpinTest(forcedResult = null) {
       // Reel 5 gets the dramatic slowdown
 
       const durations = [1300, 1700, 2100, 2500, 4000];
+      const oppositeResult = forcedResult === "heads" ? "tails" : "heads";
+
+      const winningCount = Math.random() < 0.15
+        ? 5
+          : Math.random() < 0.45
+              ? 4
+                  : 3;
+
+                  const reelResults = Array(5).fill(forcedResult);
+
+                  for (let i = winningCount; i < 5; i++) {
+                    reelResults[i] = oppositeResult;
+                    }
+
+                    reelResults.sort(() => Math.random() - 0.5);
 
       kydnoReelTracks.forEach((track, index) => {
         const reelNumber = index + 1;
@@ -295,7 +312,7 @@ function runKydnoSpinTest(forcedResult = null) {
         spinKydnoReel(
             track,
               reelElement,
-                forcedResult || KYDNO_TEST_RESULTS[index],
+                reelResults[index],
                   reelNumber,
                     durations[index],
                     );     
