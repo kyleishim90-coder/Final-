@@ -224,6 +224,10 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
                                     })[0];
 
                                     let finalY = currentY;
+                                    if (reelNumber === 5) {
+                                        finalY += 1;
+                                        }
+                                    
 
                                     if (targetCoin) {
                                       const targetCenter =
