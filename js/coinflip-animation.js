@@ -274,22 +274,7 @@ function runKydnoSpinTest(forcedResult = null) {
 
     if (landedCoin) {
       landedCoin.classList.remove("show");
-        const coins = Array.from(track.querySelectorAll(".kydno-reel-coin"));
-
-          const targetCoin =
-              coins.find((coin) => coin.dataset.side === resultSide);
-
-                if (targetCoin) {
-                    const coinHeight = targetCoin.getBoundingClientRect().height;
-                        const reelHeight = reelElement.clientHeight;
-
-                            const targetY =
-                                  reelHeight / 2 -
-                                        (targetCoin.offsetTop + coinHeight / 2);
-
-                                            track.style.transition = "transform 420ms ease-out";
-                                                track.style.transform = `translate(-50%, ${targetY}px)`;
-                                                  }
+        
       landedCoin.removeAttribute("src");
     }
   });
