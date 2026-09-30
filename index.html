@@ -3020,13 +3020,15 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                         joinResult.winner_side ||
                                             joinResult.flip_result;
 
-                                        if (resultSide) {
-                                            window.startKydnoCoinflip(resultSide);
-                                            }
-                                            window.kydnoLastFlipResult = String(resultSide || "")
-                                                .toLowerCase()
-                                                    .trim();
-                                                    window.kydnoLastFlipWinnerId = joinResult.winner_id || "";
+                                        window.kydnoLastFlipResult = String(resultSide || "")
+                                            .toLowerCase()
+                                                .trim();
+
+                                                window.kydnoLastFlipWinnerId = joinResult.winner_id || "";
+
+                                                if (resultSide) {
+                                                    window.startKydnoCoinflip(resultSide);
+                                                    }
 
                                             closeCreateFlipPanel();
                                             return;
