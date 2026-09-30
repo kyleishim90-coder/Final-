@@ -1722,6 +1722,33 @@ CREATE FLIP PANEL
                                                                                                                             </div>
                                                                                                                             
                                                                                                                             </div>
+                                                                                                                            <div id="kydno-flip-result-popup" class="kydno-flip-result-popup" hidden>
+                                                                                                                                    <div class="kydno-flip-result-box">
+
+                                                                                                                                            <button
+                                                                                                                                                        id="kydno-flip-result-close"
+                                                                                                                                                                    class="kydno-flip-result-close"
+                                                                                                                                                                                type="button"
+                                                                                                                                                                                        >
+                                                                                                                                                                                                    ×
+                                                                                                                                                                                                            </button>
+
+                                                                                                                                                                                                                    <div id="kydno-flip-result-side" class="kydno-flip-result-side">
+                                                                                                                                                                                                                            </div>
+
+                                                                                                                                                                                                                                    <h2 id="kydno-flip-result-title">
+                                                                                                                                                                                                                                            </h2>
+
+                                                                                                                                                                                                                                                    <button
+                                                                                                                                                                                                                                                                id="kydno-flip-result-next"
+                                                                                                                                                                                                                                                                            class="kydno-flip-result-next"
+                                                                                                                                                                                                                                                                                        type="button"
+                                                                                                                                                                                                                                                                                                >
+                                                                                                                                                                                                                                                                                                            Next
+                                                                                                                                                                                                                                                                                                                    </button>
+
+                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                        </div>
 <div class="active-flips-list" id="active-flips-list">
 <!-- Empty state -->
 <div class="flips-empty-state">
@@ -2996,6 +3023,9 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                         if (resultSide) {
                                             window.startKydnoCoinflip(resultSide);
                                             }
+                                            window.kydnoLastFlipResult = String(resultSide || "")
+                                                .toLowerCase()
+                                                    .trim();
 
                                             closeCreateFlipPanel();
                                             return;

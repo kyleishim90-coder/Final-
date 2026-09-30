@@ -503,3 +503,78 @@
             scale(1);
     }
 }
+
+/* =========================
+   KYDNO FLIP RESULT POPUP
+      ========================= */
+
+      .kydno-flip-result-popup {
+          position: fixed;
+              inset: 0;
+                  z-index: 100000;
+                      display: flex;
+                          align-items: center;
+                              justify-content: center;
+                                  background: rgba(0, 0, 0, 0.72);
+                                      backdrop-filter: blur(6px);
+                                      }
+
+                                      .kydno-flip-result-popup[hidden] {
+                                          display: none;
+                                          }
+
+                                          .kydno-flip-result-box {
+                                              position: relative;
+                                                  width: min(420px, 90vw);
+                                                      padding: 34px 28px 28px;
+                                                          border-radius: 20px;
+                                                              text-align: center;
+                                                                  background: #101722;
+                                                                      border: 1px solid rgba(255, 255, 255, 0.12);
+                                                                          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+                                                                          }
+
+                                                                          .kydno-flip-result-close {
+                                                                              position: absolute;
+                                                                                  top: 10px;
+                                                                                      right: 14px;
+                                                                                          border: none;
+                                                                                              background: transparent;
+                                                                                                  color: #ffffff;
+                                                                                                      font-size: 28px;
+                                                                                                          cursor: pointer;
+                                                                                                              opacity: 0.7;
+                                                                                                              }
+
+                                                                                                              .kydno-flip-result-close:hover {
+                                                                                                                  opacity: 1;
+                                                                                                                  }
+
+                                                                                                                  .kydno-flip-result-side {
+                                                                                                                      margin-bottom: 12px;
+                                                                                                                          font-size: 20px;
+                                                                                                                              font-weight: 700;
+                                                                                                                                  color: #ffffff;
+                                                                                                                                  }
+
+                                                                                                                                  .kydno-flip-result-title {
+                                                                                                                                      margin: 0 0 24px;
+                                                                                                                                          font-size: 32px;
+                                                                                                                                              color: #ffffff;
+                                                                                                                                              }
+
+                                                                                                                                              .kydno-flip-result-next {
+                                                                                                                                                  width: 100%;
+                                                                                                                                                      padding: 12px 20px;
+                                                                                                                                                          border: none;
+                                                                                                                                                              border-radius: 10px;
+                                                                                                                                                                  background: #4da3ff;
+                                                                                                                                                                      color: #ffffff;
+                                                                                                                                                                          font-size: 16px;
+                                                                                                                                                                              font-weight: 700;
+                                                                                                                                                                                  cursor: pointer;
+                                                                                                                                                                                  }
+
+                                                                                                                                                                                  .kydno-flip-result-next:hover {
+                                                                                                                                                                                      filter: brightness(1.1);
+                                                                                                                                                                                      }
