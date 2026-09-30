@@ -181,13 +181,10 @@ function spinKydnoReel(track, reelElement, resultSide, reelNumber, duration) {
 
     currentY += speed;
 
-    currentY -= speed;
-
     // Loop the 50-coin sequence seamlessly.
-    if (currentY < -cycleHeight) {
-      currentY += cycleHeight;
+    if (currentY > 0) {
+      currentY -= cycleHeight;
       }
-
     track.style.transform = `translate(-50%, ${currentY}px)`;
 
     if (elapsed >= duration) {
