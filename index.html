@@ -3011,7 +3011,6 @@ const selectedJoinItemIds = selectedJoinItemButtons
                         }
 
                         console.log("Successful coinflip result:", joinResult);
-                        alert(JSON.stringify(joinResult, null, 2));
                         await loadActiveFlips();
 
                         const resultSide =
@@ -3027,6 +3026,7 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                             window.kydnoLastFlipResult = String(resultSide || "")
                                                 .toLowerCase()
                                                     .trim();
+                                                    window.kydnoLastFlipWinnerId = joinResult.winner_id || "";
 
                                             closeCreateFlipPanel();
                                             return;

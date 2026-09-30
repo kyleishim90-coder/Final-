@@ -275,6 +275,18 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
       });
 
       track.classList.remove(snapClass);
+      if (reelNumber === 5) {
+          const animationPopup = document.getElementById("kydno-coinflip-animation");
+
+            if (animationPopup) {
+                animationPopup.style.display = "none";
+                  }
+
+                    setTimeout(() => {
+                        window.showKydnoFlipResultPopup();
+                          }, 300);
+                          }
+      
     }, 720);
   }, snapDuration);
 }
@@ -362,3 +374,37 @@ window.startKydnoCoinflip = function (resultSide) {
 
   runKydnoSpinTest(normalizedResult);
 };
+// =========================================================
+// KYDNO FLIP RESULT POPUP
+// =========================================================
+
+async function showKydnoFlipResultPopup() {
+  const popup = document.getElementById("kydno-flip-result-popup");
+    const sideElement = document.getElementById("kydno-flip-result-side");
+      const titleElement = document.getElementById("kydno-flip-result-title");
+
+        if (!popup || !sideElement || !titleElement) return;
+
+          const resultSide = String(window.kydnoLastFlipResult || "")
+              .toLowerCase()
+                  .trim();
+
+                    const winnerId = String(window.kydnoLastFlipWinnerId || "");
+
+                      const {
+                          data: { user }
+                            } = await supabaseClient.auth.getUser();
+
+                              const didWin = user && winnerId === user.id;
+
+                                sideElement.textContent =
+                                    resultSide === "heads" ? "HEADS" : "TAILS";
+
+                                      titleElement.textContent = didWin
+                                          ? "You Won"
+                                              : "You Lost";
+
+                                                popup.hidden = false;
+                                                }
+
+                                                window.showKydnoFlipResultPopup = showKydnoFlipResultPopup;
