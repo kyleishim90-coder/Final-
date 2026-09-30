@@ -224,9 +224,7 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
                                     })[0];
 
                                     let finalY = currentY;
-                                    if (reelNumber === 5) {
-                                        finalY += 1;
-                                        }
+                                    
                                     
 
                                     if (targetCoin) {
@@ -250,10 +248,11 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
   landedCoin.classList.remove("show");
 
   // Snap the ACTUAL moving track.
-  const snapClass =
-    reelNumber === 5 ? "kydno-reel-five-pull" : "kydno-reel-snap";
+  const snapClass = "kydno-reel-snap";
 
   const snapDuration = reelNumber === 5 ? 720 : 420;
+
+  track.style.animationDuration = `${snapDuration}ms`;
 
   track.classList.remove("kydno-reel-snap");
   track.classList.remove("kydno-reel-five-pull");
