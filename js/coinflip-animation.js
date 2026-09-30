@@ -206,7 +206,33 @@ function spinKydnoReel(track, reelElement, resultSide, reelNumber, duration) {
 // =========================================================
 
 function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
-  track.style.setProperty("--kydno-base-y", `${currentY}px`);
+  const coins = Array.from(track.querySelectorAll(".kydno-reel-coin"));
+
+  const coinHeight = coins[0]?.getBoundingClientRect().height || 105;
+  const reelCenter = reelElement.clientHeight / 2;
+
+  const targetCoin = coins
+    .filter((coin) => coin.dataset.side === resultSide)
+      .sort((a, b) => {
+          const aCenter = a.offsetTop + currentY + coinHeight / 2;
+              const bCenter = b.offsetTop + currentY + coinHeight / 2;
+
+                  return (
+                        Math.abs(aCenter - reelCenter) -
+                              Math.abs(bCenter - reelCenter)
+                                  );
+                                    })[0];
+
+                                    let finalY = currentY;
+
+                                    if (targetCoin) {
+                                      const targetCenter =
+                                          targetCoin.offsetTop + currentY + coinHeight / 2;
+
+                                            finalY += reelCenter - targetCenter;
+                                            }
+
+                                            track.style.setProperty("--kydno-base-y", `${finalY}px`);
 
   if (!track || !reelElement) return;
 
