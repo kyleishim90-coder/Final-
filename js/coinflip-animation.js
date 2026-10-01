@@ -248,6 +248,8 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
   landedCoin.classList.remove("show");
 
   // Smoothly land the reel on the actual result.
+  const snapClass = "kydno-reel-snap";
+  const snapDuration = reelNumber === 5 ? 720 : 420;
   if (reelNumber === 5) {
     track.classList.remove("kydno-reel-snap");
       track.classList.remove("kydno-reel-five-pull");
@@ -258,8 +260,7 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
               track.style.transform =
                   `translate(-50%, ${finalY}px)`;
                   } else {
-                    const snapClass = "kydno-reel-snap";
-                      const snapDuration = 420;
+                  
 
                         track.style.animationDuration = `${snapDuration}ms`;
 
