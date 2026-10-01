@@ -578,3 +578,31 @@
                                                                                                                                                                                   .kydno-flip-result-next:hover {
                                                                                                                                                                                       filter: brightness(1.1);
                                                                                                                                                                                       }
+ /* =========================================
+    KYDNO COINFLIP — FULLSCREEN ANIMATION POPUP
+       ========================================= */
+
+       #kydno-coinflip-animation {
+           position: fixed !important;
+               inset: 0 !important;
+                   width: 100vw !important;
+                       height: 100dvh !important;
+
+                           display: none !important;
+
+                               align-items: center !important;
+                                   justify-content: center !important;
+
+                                       background: rgba(3, 8, 18, 0.78) !important;
+                                           backdrop-filter: blur(7px) !important;
+                                               -webkit-backdrop-filter: blur(7px) !important;
+
+                                                   z-index: 2147483001 !important;
+
+                                                       box-sizing: border-box !important;
+                                                       }
+
+                                                       #kydno-coinflip-animation .kydno-slot-machine {
+                                                           position: relative;
+                                                               z-index: 2;
+                                                               }                                                                                                                                                                                   
