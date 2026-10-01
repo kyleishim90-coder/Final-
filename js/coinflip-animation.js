@@ -424,3 +424,23 @@ async function showKydnoFlipResultPopup() {
                                                 }
 
                                                 window.showKydnoFlipResultPopup = showKydnoFlipResultPopup;
+                                                document.addEventListener("DOMContentLoaded", () => {
+                                                      const popup = document.getElementById("kydno-flip-result-popup");
+                                                          const closeButton = document.getElementById("kydno-flip-result-close");
+                                                              const nextButton = document.getElementById("kydno-flip-result-next");
+
+                                                                  if (!popup) return;
+
+                                                                      if (closeButton) {
+                                                                              closeButton.addEventListener("click", () => {
+                                                                                          popup.hidden = true;
+                                                                                                  });
+                                                                                                      }
+
+                                                                                                          if (nextButton) {
+                                                                                                                  nextButton.addEventListener("click", () => {
+                                                                                                                              popup.hidden = true;
+                                                                                                                                      });
+                                                                                                                                          }
+                                                                                                                                          });
+                                                
