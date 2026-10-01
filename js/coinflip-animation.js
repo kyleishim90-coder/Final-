@@ -294,7 +294,7 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
 
                     setTimeout(() => {
                         window.showKydnoFlipResultPopup();
-                          }, 300);
+                          }, 1300);
                           }
       
     }, 720);
