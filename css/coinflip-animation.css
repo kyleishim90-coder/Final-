@@ -605,4 +605,41 @@
                                                        #kydno-coinflip-animation .kydno-slot-machine {
                                                            position: relative;
                                                                z-index: 2;
-                                                               }                                                                                                                                                                                   
+                                                               }   
+
+/* Default Kydno Kore profile icon */
+.kydno-result-profile {
+    width: 58px;
+        height: 58px;
+            border-radius: 50%;
+                background: #737983;
+                    display: flex;
+                        align-items: center;
+                            justify-content: center;
+                                color: #dfe3e8;
+                                    overflow: hidden;
+                                    }
+
+                                    .kydno-result-profile span {
+                                        font-size: 0;
+                                        }
+
+                                        .kydno-result-profile span::before {
+                                            content: "";
+                                                display: block;
+                                                    width: 18px;
+                                                        height: 18px;
+                                                            border-radius: 50%;
+                                                                background: #dfe3e8;
+                                                                    margin: 0 auto 3px;
+                                                                    }
+
+                                                                    .kydno-result-profile span::after {
+                                                                        content: "";
+                                                                            display: block;
+                                                                                width: 32px;
+                                                                                    height: 18px;
+                                                                                        border-radius: 18px 18px 8px 8px;
+                                                                                            background: #dfe3e8;
+                                                                                                margin: 0 auto;
+                                                                                                }
