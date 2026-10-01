@@ -412,9 +412,59 @@ async function showKydnoFlipResultPopup() {
                             } = await supabaseClient.auth.getUser();
 
                               const didWin = user && winnerId === user.id;
+                              const hostId = String(window.kydnoLastFlipHostId || "");
+
+                              const [hostProfileResult, joinerProfileResult] = await Promise.all([
+                                  hostId
+                                          ? supabaseClient
+                                                      .from("profiles")
+                                                                  .select("username")
+                                                                              .eq("id", hostId)
+                                                                                          .maybeSingle()
+                                                                                                  : Promise.resolve({ data: null }),
+
+                                                                                                      user?.id
+                                                                                                              ? supabaseClient
+                                                                                                                          .from("profiles")
+                                                                                                                                      .select("username")
+                                                                                                                                                  .eq("id", user.id)
+                                                                                                                                                              .maybeSingle()
+                                                                                                                                                                      : Promise.resolve({ data: null })
+                                                                                                                                                                      ]);
+                                                                                                                                                                      const valueElement = document.getElementById("kydno-result-value");
+
+                                                                                                                                                                      const valueWon = Number(window.kydnoLastFlipValueWon) || 0;
+
+                                                                                                                                                                      if (valueElement) {
+                                                                                                                                                                          valueElement.textContent = valueWon.toLocaleString();
+                                                                                                                                                                          }
+
+                                                                                                                                                                      const playerOne = document.getElementById("kydno-result-player-one");
+                                                                                                                                                                      const playerTwo = document.getElementById("kydno-result-player-two");
+
+                                                                                                                                                                      if (playerOne) {
+                                                                                                                                                                          playerOne.textContent = hostProfileResult.data?.username || "Player";
+                                                                                                                                                                          }
+
+                                                                                                                                                                          if (playerTwo) {
+                                                                                                                                                                              playerTwo.textContent = joinerProfileResult.data?.username || "You";
+                                                                                                                                                                              }
 
                                 sideElement.textContent =
                                     resultSide === "heads" ? "HEADS" : "TAILS";
+                                    const coinImage = document.getElementById("kydno-result-coin-image");
+
+                                    if (coinImage) {
+                                        coinImage.src =
+                                                resultSide === "heads"
+                                                            ? KYDNO_COIN_ASSETS.heads
+                                                                        : KYDNO_COIN_ASSETS.tails;
+
+                                                                            coinImage.alt =
+                                                                                    resultSide === "heads"
+                                                                                                ? "Heads"
+                                                                                                            : "Tails";
+                                                                                                            }
 
                                       titleElement.textContent = didWin
                                           ? "You Won"
