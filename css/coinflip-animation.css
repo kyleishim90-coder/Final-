@@ -643,3 +643,13 @@
                                                                                             background: #dfe3e8;
                                                                                                 margin: 0 auto;
                                                                                                 }
+ /* Result popup coin size */
+ #kydno-result-coin-image {
+     width: 90px !important;
+         height: 90px !important;
+             max-width: 90px !important;
+                 max-height: 90px !important;
+                     object-fit: contain;
+                         display: block;
+                             margin: 10px auto 18px;
+                             }                                                                                               
