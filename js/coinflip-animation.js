@@ -247,19 +247,29 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
 
   landedCoin.classList.remove("show");
 
-  // Snap the ACTUAL moving track.
-  const snapClass = "kydno-reel-snap";
+  // Smoothly land the reel on the actual result.
+  if (reelNumber === 5) {
+    track.classList.remove("kydno-reel-snap");
+      track.classList.remove("kydno-reel-five-pull");
 
-  const snapDuration = reelNumber === 5 ? 720 : 420;
+        track.style.transition =
+            "transform 0.72s cubic-bezier(0.22, 0.8, 0.25, 1)";
 
-  track.style.animationDuration = `${snapDuration}ms`;
+              track.style.transform =
+                  `translate(-50%, ${finalY}px)`;
+                  } else {
+                    const snapClass = "kydno-reel-snap";
+                      const snapDuration = 420;
 
-  track.classList.remove("kydno-reel-snap");
-  track.classList.remove("kydno-reel-five-pull");
+                        track.style.animationDuration = `${snapDuration}ms`;
 
-  void track.offsetWidth;
+                          track.classList.remove("kydno-reel-snap");
+                            track.classList.remove("kydno-reel-five-pull");
 
-  track.classList.add(snapClass);
+                              void track.offsetWidth;
+
+                                track.classList.add(snapClass);
+                                }
 
   // Wait until the physical snap is finished.
   setTimeout(() => {
