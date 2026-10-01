@@ -363,11 +363,6 @@ function runKydnoSpinTest(forcedResult = null) {
 // Allows us to restart the test later
 window.runKydnoSpinTest = runKydnoSpinTest;
 window.startKydnoCoinflip = function (resultSide) {
- const animationPopup = document.getElementById("kydno-coinflip-animation");
-
- if (animationPopup) {
-     animationPopup.style.display = "flex";
-     } 
   const normalizedResult = String(resultSide || "")
     .toLowerCase()
     .trim();
@@ -376,6 +371,11 @@ window.startKydnoCoinflip = function (resultSide) {
     console.error("Invalid Kydno coinflip result:", resultSide);
     return;
   }
+  const animationPopup = document.getElementById("kydno-coinflip-animation");
+
+  if (animationPopup) {
+      animationPopup.style.display = "flex";
+      }
 
   runKydnoSpinTest(normalizedResult);
 };
