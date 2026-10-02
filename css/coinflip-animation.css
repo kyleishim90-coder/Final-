@@ -719,4 +719,32 @@
                                                               .kydno-result-player-items::-webkit-scrollbar-thumb {
                                                                   background: rgba(255, 255, 255, 0.25);
                                                                       border-radius: 10px;
-                                                                      }                                                                                                                                                                                        
+                                                                      }      
+   .kydno-result-item {
+        display: flex;
+            align-items: center;
+                gap: 7px;
+                    min-height: 30px;
+                        padding: 3px 5px;
+                            border-radius: 7px;
+                                background: rgba(255, 255, 255, 0.04);
+                                    box-sizing: border-box;
+                                    }
+
+                                    .kydno-result-item img {
+                                        width: 28px !important;
+                                            height: 28px !important;
+                                                max-width: 28px !important;
+                                                    max-height: 28px !important;
+                                                        object-fit: contain !important;
+                                                            flex: 0 0 28px;
+                                                            }
+
+                                                            .kydno-result-item span {
+                                                                color: #ffffff;
+                                                                    font-size: 11px;
+                                                                        white-space: nowrap;
+                                                                            overflow: hidden;
+                                                                                text-overflow: ellipsis;
+                                                                                }
+                                                                                                                                                                                                                                       
