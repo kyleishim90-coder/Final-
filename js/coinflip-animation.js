@@ -286,18 +286,24 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
       });
 
       track.classList.remove(snapClass);
-      if (reelNumber === 5) {
-          const animationPopup = document.getElementById("kydno-coinflip-animation");
+     if (reelNumber === 5) {
+          const animationPopup =
+                  document.getElementById("kydno-coinflip-animation");
 
-            if (animationPopup) {
-                animationPopup.style.display = "none";
-                  }
+                      // Keep the final five coins visible for 1 extra second.
+                          setTimeout(() => {
+                                  if (animationPopup) {
+                                              animationPopup.style.display = "none";
+                                                      }
 
-                    setTimeout(() => {
-                        window.showKydnoFlipResultPopup();
-                          }, 1300);
-                          }
-      
+                                                              // Keep the original 300ms result-panel transition.
+                                                                      setTimeout(() => {
+                                                                                  window.showKydnoFlipResultPopup();
+                                                                                          }, 300);
+
+                                                                                              }, 1000);
+                                                                                              }
+     
     }, 720);
   }, snapDuration);
 }
