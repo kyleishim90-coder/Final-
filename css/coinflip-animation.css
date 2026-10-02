@@ -12,25 +12,66 @@
 }
 
 .kydno-slot-machine {
-    position: relative;
-    width: min(1100px, 96vw);
-    min-height: 360px;
-    padding: 55px 90px 55px 55px;
-    box-sizing: border-box;
-    border-radius: 28px;
-    background:
-        linear-gradient(
-            145deg,
-            #303945 0%,
-            #171d25 45%,
-            #0b1017 100%
-        );
-    border: 3px solid rgba(255, 255, 255, 0.12);
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.55),
-        inset 0 2px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -8px 20px rgba(0, 0, 0, 0.35);
-}
+        position: relative;
+            width: min(1100px, 96vw);
+                min-height: 360px;
+                    padding: 55px 90px 55px 55px;
+                        box-sizing: border-box;
+
+                            /* Dark metallic cabinet */
+                                background:
+                                        linear-gradient(
+                                                    145deg,
+                                                                #46515e 0%,
+                                                                            #252d37 18%,
+                                                                                        #151b23 48%,
+                                                                                                    #0b1016 100%
+                                                                                                            );
+
+                                                                                                                border: 3px solid #56616d;
+                                                                                                                    border-radius: 28px;
+
+                                                                                                                        /* Deep cabinet shadow + metallic highlights */
+                                                                                                                            box-shadow:
+                                                                                                                                    0 30px 70px rgba(0, 0, 0, 0.65),
+                                                                                                                                            0 8px 18px rgba(0, 0, 0, 0.45),
+                                                                                                                                                    inset 0 2px 0 rgba(255, 255, 255, 0.18),
+                                                                                                                                                            inset 0 0 0 2px rgba(0, 0, 0, 0.35),
+                                                                                                                                                                    inset 0 -14px 25px rgba(0, 0, 0, 0.42);
+
+                                                                                                                                                                        overflow: hidden;
+                                                                                                                                                                        }
+
+                                                                                                                                                                        /* Subtle metallic reflection across the cabinet */
+                                                                                                                                                                        .kydno-slot-machine::before {
+                                                                                                                                                                            content: "";
+                                                                                                                                                                                position: absolute;
+                                                                                                                                                                                    inset: 0;
+
+                                                                                                                                                                                        background:
+                                                                                                                                                                                                linear-gradient(
+                                                                                                                                                                                                            115deg,
+                                                                                                                                                                                                                        rgba(255, 255, 255, 0.10) 0%,
+                                                                                                                                                                                                                                    rgba(255, 255, 255, 0.025) 18%,
+                                                                                                                                                                                                                                                transparent 40%,
+                                                                                                                                                                                                                                                            transparent 100%
+                                                                                                                                                                                                                                                                    );
+
+                                                                                                                                                                                                                                                                        pointer-events: none;
+                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                        /* Thin inner cabinet edge */
+                                                                                                                                                                                                                                                                        .kydno-slot-machine::after {
+                                                                                                                                                                                                                                                                            content: "";
+                                                                                                                                                                                                                                                                                position: absolute;
+                                                                                                                                                                                                                                                                                    inset: 10px;
+
+                                                                                                                                                                                                                                                                                        border: 1px solid rgba(255, 255, 255, 0.07);
+                                                                                                                                                                                                                                                                                            border-radius: 20px;
+
+                                                                                                                                                                                                                                                                                                pointer-events: none;
+                                                                                                                                                                                                                                                                                                }
+
 
 .kydno-slot-window {
     width: 100%;
