@@ -655,7 +655,7 @@
                              }                  
   /* Result popup player layout */
   .kydno-flip-result-box {
-        width: min(430px, 88vw) !important;
+        width: min(360px, 84vw) !important;
         }
   
 
