@@ -449,6 +449,40 @@ async function showKydnoFlipResultPopup() {
                                                                                                                                                                           if (playerTwo) {
                                                                                                                                                                               playerTwo.textContent = joinerProfileResult.data?.username || "You";
                                                                                                                                                                               }
+                                                                                                                                                                              const playerOneItems = document.getElementById("kydno-result-player-one-items");
+                                                                                                                                                                              const playerTwoItems = document.getElementById("kydno-result-player-two-items");
+
+                                                                                                                                                                              function renderResultItems(container, items) {
+                                                                                                                                                                                  if (!container) return;
+
+                                                                                                                                                                                      container.innerHTML = "";
+
+                                                                                                                                                                                          (Array.isArray(items) ? items : []).forEach(item => {
+                                                                                                                                                                                                  const row = document.createElement("div");
+                                                                                                                                                                                                          row.className = "kydno-result-item";
+
+                                                                                                                                                                                                                  const image = document.createElement("img");
+                                                                                                                                                                                                                          image.src = item.image || "";
+                                                                                                                                                                                                                                  image.alt = item.name || "Item";
+
+                                                                                                                                                                                                                                          const name = document.createElement("span");
+                                                                                                                                                                                                                                                  name.textContent = item.name || "Item";
+
+                                                                                                                                                                                                                                                          row.appendChild(image);
+                                                                                                                                                                                                                                                                  row.appendChild(name);
+                                                                                                                                                                                                                                                                          container.appendChild(row);
+                                                                                                                                                                                                                                                                              });
+                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                              renderResultItems(
+                                                                                                                                                                                                                                                                                  playerOneItems,
+                                                                                                                                                                                                                                                                                      window.kydnoLastFlipHostItems
+                                                                                                                                                                                                                                                                                      );
+
+                                                                                                                                                                                                                                                                                      renderResultItems(
+                                                                                                                                                                                                                                                                                          playerTwoItems,
+                                                                                                                                                                                                                                                                                              window.kydnoLastFlipJoinerItems
+                                                                                                                                                                                                                                                                                              );
 
                                 sideElement.textContent =
                                     resultSide === "heads" ? "HEADS" : "TAILS";
