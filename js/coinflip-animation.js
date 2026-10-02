@@ -433,11 +433,23 @@ async function showKydnoFlipResultPopup() {
                                                                                                                                                                       ]);
                                                                                                                                                                       const valueElement = document.getElementById("kydno-result-value");
 
-                                                                                                                                                                      const valueWon = Number(window.kydnoLastFlipValueWon) || 0;
+                                                                                                                                                                      const poolValue = Number(window.kydnoLastFlipValueWon) || 0;
 
-                                                                                                                                                                      if (valueElement) {
-                                                                                                                                                                          valueElement.textContent = valueWon.toLocaleString();
-                                                                                                                                                                          }
+                                                                                                                                                                      function formatPoolValue(value) {
+                                                                                                                                                                          if (value >= 1000000) {
+                                                                                                                                                                                  return `${(value / 1000000).toFixed(value % 1000000 === 0 ? 0 : 1)}m`;
+                                                                                                                                                                                      }
+
+                                                                                                                                                                                          if (value >= 1000) {
+                                                                                                                                                                                                  return `${(value / 1000).toFixed(value % 1000 === 0 ? 0 : 1)}k`;
+                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                          return value.toLocaleString();
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          if (valueElement) {
+                                                                                                                                                                                                              valueElement.textContent = formatPoolValue(poolValue);
+                                                                                                                                                                                                              }
 
                                                                                                                                                                       const playerOne = document.getElementById("kydno-result-player-one");
                                                                                                                                                                       const playerTwo = document.getElementById("kydno-result-player-two");
