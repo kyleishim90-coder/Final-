@@ -1625,11 +1625,14 @@ Join Flips
                             🗑️ Pet Delete
                                 </button>
 <button id="admin-tab-pet-add" type="button">
-                                            ➕ Pet Add
+                                            🦝 Pet Add
                                                 </button>
 <button id="admin-tab-kash" type="button">
                                                             💰 Kash
                                                                 </button>
+                                                                <button id="admin-tab-reserve" type="button">
+                                                                        📦 Reserve Box
+                                                                        </button>
 </div>
 <p>Search for a user to manage their account.</p>
 <input id="admin-user-search" placeholder="Enter username" type="text"/>
@@ -1648,7 +1651,17 @@ Search User
                                                                                         </button>
 <p id="admin-kash-status" style="margin:10px 0 0; font-size:12px;"></p>
 </div>
-<!-- ADMIN CODES -->
+
+<!-- ADMIN RESERVE BOX -->
+<div id="admin-reserve-section" style="display:none; margin-top:20px; padding:16px; border:1px solid rgba(120,170,230,.18); border-radius:14px; background:rgba(8,15,28,.55);">
+    <h3 style="margin:0 0 12px;">📦 Reserve Box</h3>
+
+        <div id="admin-reserve-list"></div>
+
+            <p id="admin-reserve-status" style="margin:10px 0 0; font-size:12px;"></p>
+            </div>
+
+            <!-- ADMIN CODES -->
 <div id="admin-codes-section" style="margin-top:20px; padding:16px; border:1px solid rgba(120,170,230,.18); border-radius:14px; background:rgba(8,15,28,.55);">
 <h3 style="margin:0 0 12px;">🎟️ Codes</h3>
 <input id="admin-code-name" maxlength="50" placeholder="Code name" style="width:100%; box-sizing:border-box; padding:12px; margin-bottom:10px;" type="text"/>
