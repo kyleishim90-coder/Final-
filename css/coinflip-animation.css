@@ -74,21 +74,58 @@
 
 
 .kydno-slot-window {
-    width: 100%;
-    height: 250px;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
-    padding: 22px;
-    box-sizing: border-box;
-    background: #eceff2;
-    border-radius: 20px;
-    border: 4px solid #cfd4da;
-    box-shadow:
-        inset 0 6px 16px rgba(0, 0, 0, 0.16),
-        inset 0 -6px 16px rgba(255, 255, 255, 0.35),
-        0 10px 24px rgba(0, 0, 0, 0.38);
-}
+        position: relative;
+
+            width: 100%;
+                height: 250px;
+
+                    display: grid;
+                        grid-template-columns: repeat(5, minmax(0, 1fr));
+                            gap: 14px;
+
+                                padding: 22px;
+
+                                    box-sizing: border-box;
+
+                                        /* Recessed dark glass */
+                                            background:
+                                                    linear-gradient(
+                                                                180deg,
+                                                                            #0f151d 0%,
+                                                                                        #080d13 55%,
+                                                                                                    #05090e 100%
+                                                                                                            );
+
+                                                                                                                border-radius: 20px;
+
+                                                                                                                    border: 3px solid #69737e;
+
+                                                                                                                        box-shadow:
+                                                                                                                                inset 0 5px 12px rgba(0, 0, 0, 0.75),
+                                                                                                                                        inset 0 -2px 5px rgba(255, 255, 255, 0.06),
+                                                                                                                                                0 4px 12px rgba(0, 0, 0, 0.55);
+
+                                                                                                                                                    overflow: hidden;
+                                                                                                                                                    }
+
+                                                                                                                                                    /* Subtle glass reflection */
+                                                                                                                                                    .kydno-slot-window::before {
+                                                                                                                                                        content: "";
+                                                                                                                                                            position: absolute;
+                                                                                                                                                                inset: 0;
+
+                                                                                                                                                                    background:
+                                                                                                                                                                            linear-gradient(
+                                                                                                                                                                                        115deg,
+                                                                                                                                                                                                    rgba(255, 255, 255, 0.10) 0%,
+                                                                                                                                                                                                                rgba(255, 255, 255, 0.025) 18%,
+                                                                                                                                                                                                                            transparent 38%
+                                                                                                                                                                                                                                    );
+
+                                                                                                                                                                                                                                        pointer-events: none;
+                                                                                                                                                                                                                                            z-index: 10;
+                                                                                                                                                                                                                                            }
+
 
 .kydno-reel {
     position: relative;
