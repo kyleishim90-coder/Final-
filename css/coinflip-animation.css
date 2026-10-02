@@ -654,12 +654,7 @@
                              margin: 10px auto 18px;
                              }                  
   /* Result popup player layout */
-  .kydno-flip-result-box {
-        width: min(360px, 84vw) !important;
-        }
-  
-
-      .kydno-result-players {
+  .kydno-result-players {
           width: 100%;
               display: flex;
                   align-items: center;
