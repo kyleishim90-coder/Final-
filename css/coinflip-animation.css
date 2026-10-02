@@ -149,6 +149,32 @@
         inset 5px 0 12px rgba(0, 0, 0, 0.06),
         inset -5px 0 12px rgba(0, 0, 0, 0.06);
 }
+/* Metallic separators between reel windows */
+.kydno-reel:not(:last-child)::after {
+    content: "";
+        position: absolute;
+
+            top: 8px;
+                right: -8px;
+                    width: 3px;
+                        height: calc(100% - 16px);
+
+                            border-radius: 3px;
+
+                                background: linear-gradient(
+                                        180deg,
+                                                rgba(255, 255, 255, 0.18),
+                                                        rgba(100, 110, 120, 0.75),
+                                                                rgba(255, 255, 255, 0.12)
+                                                                    );
+
+                                                                        box-shadow:
+                                                                                1px 0 3px rgba(0, 0, 0, 0.55),
+                                                                                        -1px 0 2px rgba(255, 255, 255, 0.08);
+
+                                                                                            pointer-events: none;
+                                                                                                z-index: 20;
+                                                                                                }
 
 /* =========================================================
    VERTICAL FALLING COINS
