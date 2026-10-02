@@ -518,9 +518,19 @@ async function showKydnoFlipResultPopup() {
                                                                                                             : "Tails";
                                                                                                             }
 
-                                      titleElement.textContent = didWin
-                                          ? "You Won"
-                                              : "You Lost";
+                                    titleElement.classList.remove(
+                                          "kydno-result-win",
+                                              "kydno-result-loss"
+                                              );
+
+                                              if (didWin) {
+                                                  titleElement.textContent = "🏆 You Won";
+                                                      titleElement.classList.add("kydno-result-win");
+                                                      } else {
+                                                          titleElement.textContent = "You Lost";
+                                                              titleElement.classList.add("kydno-result-loss");
+                                                              }
+                                    
 
                                                 popup.hidden = false;
                                                 }
