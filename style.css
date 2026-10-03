@@ -1036,97 +1036,6 @@ margin: 0;
 color: #8293a6;
 font-size: 13px;
 }
-.settings-panel {
-        position: fixed;
-            top: 0;
-                left: 0;
-                    width: 420px;
-                        max-width: 90vw;
-                            height: 100vh;
-                                background: #111827;
-                                    border-right: 1px solid rgba(255, 255, 255, 0.08);
-                                        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.35);
-                                            z-index: 9999;
-
-                                                transform: translateX(-110%);
-                                                    transition: transform 0.25s ease;
-
-                                                        display: flex;
-                                                            flex-direction: column;
-                                                            }
-
-                                                            .settings-panel.open {
-                                                                transform: translateX(0);
-                                                                }
-
-                                                                .settings-header {
-                                                                    display: flex;
-                                                                        align-items: center;
-                                                                            justify-content: space-between;
-                                                                                padding: 24px;
-                                                                                    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                                                                                    }
-
-                                                                                    .settings-header h2 {
-                                                                                        margin: 0;
-                                                                                            font-size: 24px;
-                                                                                            }
-
-                                                                                            .settings-header p {
-                                                                                                margin: 5px 0 0;
-                                                                                                    opacity: 0.6;
-                                                                                                        font-size: 13px;
-                                                                                                        }
-
-                                                                                                        .settings-close {
-                                                                                                            width: 38px;
-                                                                                                                height: 38px;
-                                                                                                                    border: none;
-                                                                                                                        border-radius: 10px;
-                                                                                                                            background: rgba(255, 255, 255, 0.08);
-                                                                                                                                color: white;
-                                                                                                                                    font-size: 25px;
-                                                                                                                                        cursor: pointer;
-                                                                                                                                        }
-
-                                                                                                                                        .settings-content {
-                                                                                                                                            padding: 20px;
-                                                                                                                                                display: flex;
-                                                                                                                                                    flex-direction: column;
-                                                                                                                                                        gap: 12px;
-                                                                                                                                                        }
-
-                                                                                                                                                        .settings-option {
-                                                                                                                                                            width: 100%;
-                                                                                                                                                                display: flex;
-                                                                                                                                                                    align-items: center;
-                                                                                                                                                                        gap: 15px;
-                                                                                                                                                                            padding: 18px;
-                                                                                                                                                                                border: 1px solid rgba(255, 255, 255, 0.08);
-                                                                                                                                                                                    border-radius: 14px;
-                                                                                                                                                                                        background: rgba(255, 255, 255, 0.04);
-                                                                                                                                                                                            color: white;
-                                                                                                                                                                                                text-align: left;
-                                                                                                                                                                                                    cursor: pointer;
-                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                    .settings-option:hover {
-                                                                                                                                                                                                        background: rgba(255, 255, 255, 0.08);
-                                                                                                                                                                                                        }
-
-                                                                                                                                                                                                        .settings-option-icon {
-                                                                                                                                                                                                            font-size: 25px;
-                                                                                                                                                                                                            }
-
-                                                                                                                                                                                                            .settings-option strong,
-                                                                                                                                                                                                            .settings-option small {
-                                                                                                                                                                                                                display: block;
-                                                                                                                                                                                                                }
-
-                                                                                                                                                                                                                .settings-option small {
-                                                                                                                                                                                                                    margin-top: 4px;
-                                                                                                                                                                                                                        opacity: 0.55;
-                                                                                                                                                                                                                        }
 /* Fancy Sidebar Toggle */
 .side-menu {
 transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3735,3 +3644,110 @@ background: rgba(42, 115, 185, 0.9);
 @media(max-width:1050px){.active-flip-card{grid-template-columns:minmax(175px,1.05fr) minmax(145px,.9fr) 82px minmax(155px,.9fr) auto!important;gap:12px!important;padding:16px!important}.kk-row-avatar{width:50px!important;height:50px!important;flex-basis:50px!important}.kk-row-pet{width:48px!important;height:48px!important;flex-basis:48px!important}.kk-row-coin img{width:68px!important;height:68px!important}}
 @media(max-width:760px){.active-flips-list{padding:12px 7px 22px!important}.active-flip-card{min-height:190px!important;grid-template-columns:minmax(0,1fr) 76px!important;grid-template-rows:auto auto auto!important;gap:10px 12px!important;padding:14px!important}.kk-row-player{grid-column:1!important;grid-row:1!important}.kk-row-pets-box{grid-column:1!important;grid-row:2!important}.kk-row-coin{grid-column:2!important;grid-row:1 / span 2!important}.kk-row-values{grid-column:1!important;grid-row:3!important}.kk-row-action{grid-column:2!important;grid-row:3!important;min-width:0!important;align-items:stretch!important}.active-flip-card .join-active-flip-button,.active-flip-card .cancel-active-flip-button,.active-flip-card .admin-cancel-active-flip-button{width:100%!important;min-width:0!important}.kk-row-avatar{width:48px!important;height:48px!important;flex-basis:48px!important}.kk-row-name{font-size:15px!important}.kk-row-pet{width:48px!important;height:48px!important;flex-basis:48px!important}.kk-row-coin img{width:68px!important;height:68px!important}}
 @media(max-width:460px){.active-flip-card{min-height:208px!important}.kk-row-pet{width:44px!important;height:44px!important;flex-basis:44px!important}.kk-row-pets{gap:5px!important}.kk-row-total{font-size:15px!important}.kk-row-range{font-size:10px!important}.kk-row-action{min-width:94px!important}.active-flip-card .join-active-flip-button,.active-flip-card .cancel-active-flip-button,.active-flip-card .admin-cancel-active-flip-button{width:94px!important;font-size:10px!important;padding:8px 7px!important}}
+/* ================================
+   KYDNO KORE SETTINGS
+      ================================ */
+
+      .settings-panel {
+          position: fixed !important;
+              top: 0 !important;
+                  left: 0 !important;
+                      width: 420px !important;
+                          max-width: 90vw !important;
+                              height: 100vh !important;
+
+                                  background: #111827 !important;
+                                      border-right: 1px solid rgba(255, 255, 255, 0.08);
+                                          box-shadow: 10px 0 30px rgba(0, 0, 0, 0.35);
+
+                                              z-index: 999999 !important;
+
+                                                  transform: translateX(-110%) !important;
+                                                      transition: transform 0.25s ease;
+
+                                                          display: flex !important;
+                                                              flex-direction: column !important;
+                                                              }
+
+                                                              .settings-panel.open {
+                                                                  transform: translateX(0) !important;
+                                                                  }
+
+                                                                  .settings-header {
+                                                                      display: flex !important;
+                                                                          align-items: center;
+                                                                              justify-content: space-between;
+
+                                                                                  padding: 24px;
+                                                                                      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                                                                                      }
+
+                                                                                      .settings-header h2 {
+                                                                                          margin: 0;
+                                                                                              font-size: 24px;
+                                                                                              }
+
+                                                                                              .settings-header p {
+                                                                                                  margin: 5px 0 0;
+                                                                                                      opacity: 0.6;
+                                                                                                          font-size: 13px;
+                                                                                                          }
+
+                                                                                                          .settings-close {
+                                                                                                              width: 38px;
+                                                                                                                  height: 38px;
+
+                                                                                                                      border: none;
+                                                                                                                          border-radius: 10px;
+
+                                                                                                                              background: rgba(255, 255, 255, 0.08);
+                                                                                                                                  color: white;
+
+                                                                                                                                      font-size: 25px;
+                                                                                                                                          cursor: pointer;
+                                                                                                                                          }
+
+                                                                                                                                          .settings-content {
+                                                                                                                                              padding: 20px;
+
+                                                                                                                                                  display: flex !important;
+                                                                                                                                                      flex-direction: column !important;
+                                                                                                                                                          gap: 12px;
+                                                                                                                                                          }
+
+                                                                                                                                                          .settings-option {
+                                                                                                                                                              width: 100%;
+
+                                                                                                                                                                  display: flex !important;
+                                                                                                                                                                      align-items: center;
+
+                                                                                                                                                                          gap: 15px;
+                                                                                                                                                                              padding: 18px;
+
+                                                                                                                                                                                  border: 1px solid rgba(255, 255, 255, 0.08);
+                                                                                                                                                                                      border-radius: 14px;
+
+                                                                                                                                                                                          background: rgba(255, 255, 255, 0.04);
+                                                                                                                                                                                              color: white;
+
+                                                                                                                                                                                                  text-align: left;
+                                                                                                                                                                                                      cursor: pointer;
+                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                      .settings-option:hover {
+                                                                                                                                                                                                          background: rgba(255, 255, 255, 0.08);
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          .settings-option-icon {
+                                                                                                                                                                                                              font-size: 25px;
+                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                              .settings-option strong,
+                                                                                                                                                                                                              .settings-option small {
+                                                                                                                                                                                                                  display: block;
+                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                  .settings-option small {
+                                                                                                                                                                                                                      margin-top: 4px;
+                                                                                                                                                                                                                          opacity: 0.55;
+                                                                                                                                                                                                                          }
