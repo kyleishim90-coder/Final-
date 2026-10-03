@@ -14,5 +14,27 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     settingsClose.addEventListener("click", () => {
                                                             settingsPanel.classList.remove("open");
                                                                 });
-                                                                });
+                                                                
+const profilePictureButton =
+    document.getElementById("profile-picture-settings");
 
+    const profilePictureSelector =
+        document.getElementById("profile-picture-selector");
+
+        const profilePictureSelectorClose =
+            document.getElementById("profile-picture-selector-close");
+
+            if (
+                profilePictureButton &&
+                    profilePictureSelector &&
+                        profilePictureSelectorClose
+                        ) {
+                            profilePictureButton.addEventListener("click", () => {
+                                    profilePictureSelector.classList.add("open");
+                                        });
+
+                                            profilePictureSelectorClose.addEventListener("click", () => {
+                                                    profilePictureSelector.classList.remove("open");
+                                                        });
+                                                        }
+                                                    });

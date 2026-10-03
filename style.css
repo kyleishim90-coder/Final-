@@ -3751,3 +3751,105 @@ background: rgba(42, 115, 185, 0.9);
                                                                                                                                                                                                                       margin-top: 4px;
                                                                                                                                                                                                                           opacity: 0.55;
                                                                                                                                                                                                                           }
+  /* ================================
+     PROFILE PICTURE SELECTOR
+        ================================ */
+
+        .profile-picture-selector {
+            position: fixed;
+                top: 50%;
+                    left: 50%;
+                        width: 500px;
+                            max-width: 92vw;
+                                max-height: 85vh;
+
+                                    transform: translate(-50%, -50%);
+                                        z-index: 1000000;
+
+                                            display: none;
+                                                flex-direction: column;
+
+                                                    background: #111827;
+                                                        border: 1px solid rgba(255, 255, 255, 0.08);
+                                                            border-radius: 18px;
+                                                                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+                                                                    overflow: hidden;
+                                                                    }
+
+                                                                    .profile-picture-selector.open {
+                                                                        display: flex;
+                                                                        }
+
+                                                                        .profile-picture-selector-header {
+                                                                            display: flex;
+                                                                                align-items: center;
+                                                                                    justify-content: space-between;
+
+                                                                                        padding: 20px;
+                                                                                            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                                                                                            }
+
+                                                                                            .profile-picture-selector-header h3 {
+                                                                                                margin: 0;
+                                                                                                    font-size: 20px;
+                                                                                                    }
+
+                                                                                                    .profile-picture-selector-header p {
+                                                                                                        margin: 5px 0 0;
+                                                                                                            font-size: 13px;
+                                                                                                                opacity: 0.55;
+                                                                                                                }
+
+                                                                                                                .profile-picture-selector-close {
+                                                                                                                    width: 36px;
+                                                                                                                        height: 36px;
+
+                                                                                                                            border: none;
+                                                                                                                                border-radius: 10px;
+
+                                                                                                                                    background: rgba(255, 255, 255, 0.08);
+                                                                                                                                        color: white;
+
+                                                                                                                                            font-size: 24px;
+                                                                                                                                                cursor: pointer;
+                                                                                                                                                }
+
+                                                                                                                                                .profile-picture-pets {
+                                                                                                                                                    padding: 20px;
+
+                                                                                                                                                        display: grid;
+                                                                                                                                                            grid-template-columns: repeat(4, 1fr);
+                                                                                                                                                                gap: 12px;
+
+                                                                                                                                                                    overflow-y: auto;
+                                                                                                                                                                    }
+
+                                                                                                                                                                    .profile-picture-loading {
+                                                                                                                                                                        grid-column: 1 / -1;
+                                                                                                                                                                            text-align: center;
+                                                                                                                                                                                padding: 30px 10px;
+                                                                                                                                                                                    opacity: 0.6;
+                                                                                                                                                                                    }
+
+                                                                                                                                                                                    .profile-picture-selector-footer {
+                                                                                                                                                                                        padding: 16px 20px;
+
+                                                                                                                                                                                            border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+                                                                                                                                                                                                display: flex;
+                                                                                                                                                                                                    justify-content: flex-end;
+                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                    .profile-picture-save {
+                                                                                                                                                                                                        padding: 11px 24px;
+
+                                                                                                                                                                                                            border: none;
+                                                                                                                                                                                                                border-radius: 10px;
+
+                                                                                                                                                                                                                    background: #3b82f6;
+                                                                                                                                                                                                                        color: white;
+
+                                                                                                                                                                                                                            font-weight: 600;
+                                                                                                                                                                                                                                cursor: pointer;
+                                                                                                                                                                                                                                }                                                                                                                                                                                                                        
