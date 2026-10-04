@@ -2901,7 +2901,9 @@ async function loadActiveFlips() {
     });
 }
 
-loadActiveFlips();
+setTimeout(() => {
+        loadActiveFlips();
+        }, 0);
 document.addEventListener("click", async (event) => {
     const joinButton = event.target.closest(".join-active-flip-button");
     if (!joinButton) return;
