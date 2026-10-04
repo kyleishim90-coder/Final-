@@ -2208,7 +2208,21 @@ async function loadJoinOpponentPanel() {
     // Show the current user's saved profile name immediately, then verify it from Supabase.
     let yourName = localStorage.getItem("kydnoUsername") || "You";
     if (joinYourName) joinYourName.textContent = yourName || "You";
-    if (joinYourAvatar) joinYourAvatar.textContent = (yourName || "Y").charAt(0).toUpperCase();
+    if (joinYourAvatar) {
+            const imageUrl = await getKydnoProfileAvatar(currentUser?.id);
+
+                joinYourAvatar.textContent = "";
+
+                    if (imageUrl) {
+                            const image = document.createElement("img");
+                                    image.src = imageUrl;
+                                            image.alt = "";
+                                                    joinYourAvatar.appendChild(image);
+                                                        } else {
+                                                                joinYourAvatar.textContent = "?";
+                                                                    }
+                                                                    }
+    
     if (joinYourTotal) joinYourTotal.textContent = "0";
 
     try {
@@ -2232,13 +2246,28 @@ async function loadJoinOpponentPanel() {
         if (currentUser?.id) {
             const { data: profile, error: profileError } = await supabaseClient
                 .from("profiles")
-                .select("username")
+                .select("username, profile_pet_name")
                 .eq("id", currentUser.id)
                 .maybeSingle();
             if (!profileError && profile?.username) yourName = profile.username;
         }
         if (joinYourName) joinYourName.textContent = yourName || "You";
-        if (joinYourAvatar) joinYourAvatar.textContent = (yourName || "Y").charAt(0).toUpperCase();
+        if (joinYourAvatar) {
+                const imageUrl = await getKydnoProfileAvatar(currentUser?.id);
+
+                    joinYourAvatar.textContent = "";
+
+                        if (imageUrl) {
+                                const image = document.createElement("img");
+                                        image.src = imageUrl;
+                                                image.alt = "";
+                                                        joinYourAvatar.appendChild(image);
+                                                            } else {
+                                                                    joinYourAvatar.textContent = "?";
+                                                                        }
+                                                                        }
+        
+        
 
         // Resolve the opponent's actual profile name.
         const hostId = flip.host_id || flip.user_id || flip.creator_id || flip.owner_id;
@@ -2246,14 +2275,29 @@ async function loadJoinOpponentPanel() {
         if (!opponentName && hostId) {
             const { data: opponentProfile, error: opponentProfileError } = await supabaseClient
                 .from("profiles")
-                .select("username")
+                .select("username, profile_pet_name")
                 .eq("id", hostId)
                 .maybeSingle();
             if (!opponentProfileError && opponentProfile?.username) opponentName = opponentProfile.username;
         }
         opponentName = opponentName || "Opponent";
         if (joinOpponentName) joinOpponentName.textContent = opponentName;
-        if (joinOpponentAvatar) joinOpponentAvatar.textContent = opponentName.charAt(0).toUpperCase();
+        if (joinOpponentAvatar) {
+                const imageUrl = await getKydnoProfileAvatar(hostId);
+
+                    joinOpponentAvatar.textContent = "";
+
+                        if (imageUrl) {
+                                const image = document.createElement("img");
+                                        image.src = imageUrl;
+                                                image.alt = "";
+                                                        joinOpponentAvatar.appendChild(image);
+                                                            } else {
+                                                                    joinOpponentAvatar.textContent = "?";
+                                                                        }
+                                                                        }
+        
+        
 
         // The flip stores an item snapshot. Normalize both JSON strings and arrays.
         const opponentItems = normalizeFlipItems(flip);

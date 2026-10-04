@@ -83,4 +83,26 @@
                                                                                                                                                                                                                                                                                                                                                                                                   true
                                                                                                                                                                                                                                                                                                                                                                                                     );
                                                                                                                                                                                                                                                                                                                                                                                                     })();
+ window.getKydnoProfileAvatar = async function (userId) {
+          if (!userId) return "";
+
+              const { data, error } = await supabaseClient
+                      .from("profiles")
+                              .select("profile_pet_name")
+                                      .eq("id", userId)
+                                              .maybeSingle();
+
+                                                  if (error || !data?.profile_pet_name) {
+                                                          return "";
+                                                              }
+
+                                                                  if (
+                                                                          typeof itemImages !== "undefined" &&
+                                                                                  itemImages[data.profile_pet_name]
+                                                                                      ) {
+                                                                                              return itemImages[data.profile_pet_name];
+                                                                                                  }
+
+                                                                                                      return "";
+                                                                                                      };                                                                                                                                                                                                                                                                                                                                                                                                  
 
