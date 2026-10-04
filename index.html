@@ -2805,11 +2805,14 @@ async function loadActiveFlips() {
     if (hostIds.length) {
         const { data: profiles } = await supabaseClient
             .from("profiles")
-            .select("id, username")
+            .select("id, username, profile_pet_name")
             .in("id", hostIds);
         (profiles || []).forEach(profile => {
-            profileMap[profile.id] = profile.username || "Player";
-        });
+                profileMap[profile.id] = {
+                        username: profile.username || "Player",
+                                profilePetName: profile.profile_pet_name || ""
+                                    };
+                                    });
     }
 
     const isAdmin = localStorage.getItem("kydnoIsAdmin") === "true";
@@ -2817,7 +2820,19 @@ async function loadActiveFlips() {
     waitingFlips.forEach((flip) => {
         const items = Array.isArray(flip.items) ? flip.items : [];
         const itemCount = items.length;
-        const hostName = profileMap[flip.host_id] || "Player";
+        const hostProfile = profileMap[flip.host_id] || {
+                username: "Player",
+                    profilePetName: ""
+                    };
+
+                    const hostName = hostProfile.username;
+                    const hostProfilePet = hostProfile.profilePetName;
+                    const hostProfileImage =
+                        hostProfilePet &&
+                            typeof itemImages !== "undefined" &&
+                                itemImages[hostProfilePet]
+                                        ? itemImages[hostProfilePet]
+                                                : "";
         const totalValue = Number(flip.total_value) || 0;
         const minimum = Math.round(totalValue * 0.95);
         const maximum = Math.round(totalValue * 1.05);
@@ -2857,7 +2872,13 @@ async function loadActiveFlips() {
         flipCard.className = "active-flip-card";
         flipCard.innerHTML = `
             <div class="kk-row-player">
-                <div class="kk-row-avatar">?</div>
+                <div class="kk-row-avatar">
+                        ${
+                                hostProfileImage
+                                            ? `<img src="${hostProfileImage}" alt="">`
+                                                        : "?"
+                                                            }
+                                                            </div>
                 <div class="kk-row-player-info">
                     <div class="kk-row-name">${hostName}</div>
                     <div class="kk-row-item-count">(${itemCount} Item${itemCount === 1 ? "" : "s"})</div>

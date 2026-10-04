@@ -3899,5 +3899,12 @@ background: rgba(42, 115, 185, 0.9);
                                                                                                         background: rgba(34, 197, 94, 0.15);
                                                                                                             box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
                                                                                                             }
+  .kk-row-avatar img {
+        width: 100%;
+            height: 100%;
+                object-fit: contain;
+                    display: block;
+                    }
+                                                                                                           
                                                                                                                                                                                                                                                                                       
 
