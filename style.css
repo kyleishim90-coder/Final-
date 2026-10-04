@@ -3910,6 +3910,10 @@ FLIP-ROWS so it loads after legacy inline styles. */
                     object-fit: contain;
                         display: block;
                         }
+   .kydno-result-profile {
+        background: transparent !important;
+        }
+               
   
                                                                                                            
                                                                                                                                                                                                                                                                                       
