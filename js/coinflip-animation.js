@@ -424,7 +424,7 @@ async function showKydnoFlipResultPopup() {
                                   hostId
                                           ? supabaseClient
                                                       .from("profiles")
-                                                                  .select("username")
+                                                                  .select("username, profile_pet_name")
                                                                               .eq("id", hostId)
                                                                                           .maybeSingle()
                                                                                                   : Promise.resolve({ data: null }),
@@ -432,7 +432,7 @@ async function showKydnoFlipResultPopup() {
                                                                                                       user?.id
                                                                                                               ? supabaseClient
                                                                                                                           .from("profiles")
-                                                                                                                                      .select("username")
+                                                                                                                                      .select("username, profile_pet_name")
                                                                                                                                                   .eq("id", user.id)
                                                                                                                                                               .maybeSingle()
                                                                                                                                                                       : Promise.resolve({ data: null })
@@ -467,6 +467,36 @@ async function showKydnoFlipResultPopup() {
                                                                                                                                                                           if (playerTwo) {
                                                                                                                                                                               playerTwo.textContent = joinerProfileResult.data?.username || "You";
                                                                                                                                                                               }
+                                                                                                                                                                              const resultProfiles = document.querySelectorAll(".kydno-result-profile");
+
+                                                                                                                                                                              const hostImageUrl =
+                                                                                                                                                                                  typeof itemImages !== "undefined" &&
+                                                                                                                                                                                      hostProfileResult.data?.profile_pet_name
+                                                                                                                                                                                              ? itemImages[hostProfileResult.data.profile_pet_name]
+                                                                                                                                                                                                      : "";
+
+                                                                                                                                                                                                      const joinerImageUrl =
+                                                                                                                                                                                                          typeof itemImages !== "undefined" &&
+                                                                                                                                                                                                              joinerProfileResult.data?.profile_pet_name
+                                                                                                                                                                                                                      ? itemImages[joinerProfileResult.data.profile_pet_name]
+                                                                                                                                                                                                                              : "";
+
+                                                                                                                                                                                                                              [resultProfiles[0], resultProfiles[1]].forEach((profileBox, index) => {
+                                                                                                                                                                                                                                  if (!profileBox) return;
+
+                                                                                                                                                                                                                                      profileBox.innerHTML = "";
+
+                                                                                                                                                                                                                                          const imageUrl = index === 0 ? hostImageUrl : joinerImageUrl;
+
+                                                                                                                                                                                                                                              if (imageUrl) {
+                                                                                                                                                                                                                                                      const image = document.createElement("img");
+                                                                                                                                                                                                                                                              image.src = imageUrl;
+                                                                                                                                                                                                                                                                      image.alt = "";
+                                                                                                                                                                                                                                                                              profileBox.appendChild(image);
+                                                                                                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                                                                                                          profileBox.textContent = "?";
+                                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                                                              });
                                                                                                                                                                               const playerOneItems = document.getElementById("kydno-result-player-one-items");
                                                                                                                                                                               const playerTwoItems = document.getElementById("kydno-result-player-two-items");
 
