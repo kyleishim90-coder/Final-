@@ -2209,19 +2209,9 @@ async function loadJoinOpponentPanel() {
     let yourName = localStorage.getItem("kydnoUsername") || "You";
     if (joinYourName) joinYourName.textContent = yourName || "You";
     if (joinYourAvatar) {
-            const imageUrl = await getKydnoProfileAvatar(currentUser?.id);
-
-                joinYourAvatar.textContent = "";
-
-                    if (imageUrl) {
-                            const image = document.createElement("img");
-                                    image.src = imageUrl;
-                                            image.alt = "";
-                                                    joinYourAvatar.appendChild(image);
-                                                        } else {
-                                                                joinYourAvatar.textContent = "?";
-                                                                    }
-                                                                    }
+            joinYourAvatar.textContent = "?";
+            }
+    
     
     if (joinYourTotal) joinYourTotal.textContent = "0";
 
@@ -2253,19 +2243,9 @@ async function loadJoinOpponentPanel() {
         }
         if (joinYourName) joinYourName.textContent = yourName || "You";
         if (joinYourAvatar) {
-                const imageUrl = await getKydnoProfileAvatar(currentUser?.id);
-
-                    joinYourAvatar.textContent = "";
-
-                        if (imageUrl) {
-                                const image = document.createElement("img");
-                                        image.src = imageUrl;
-                                                image.alt = "";
-                                                        joinYourAvatar.appendChild(image);
-                                                            } else {
-                                                                    joinYourAvatar.textContent = "?";
-                                                                        }
-                                                                        }
+                joinYourAvatar.textContent = "?";
+                }
+        
         
         
 
