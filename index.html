@@ -2240,25 +2240,30 @@ async function loadJoinOpponentPanel() {
                 .eq("id", currentUser.id)
                 .maybeSingle();
             if (!profileError && profile?.username) yourName = profile.username;
-        }
+            if (joinYourAvatar) {
+                joinYourAvatar.textContent = "";
+                
+                    const imageUrl =
+                            typeof itemImages !== "undefined" && profile?.profile_pet_name
+                                        ? itemImages[profile.profile_pet_name]
+                                                    : "";
+                                                    
+                                                        if (imageUrl) {
+                                                                const image = document.createElement("img");
+                                                                        image.src = imageUrl;
+                                                                                image.alt = "";
+                                                                                        joinYourAvatar.appendChild(image);
+                                                                                            } else {
+                                                                                                    joinYourAvatar.textContent = "?";
+                                                                                                        }
+                                                                                                        }
+                                                                                                    
+        
         if (joinYourName) joinYourName.textContent = yourName || "You";
        if (joinYourAvatar) {
-            joinYourAvatar.textContent = "";
-
-                const imageUrl =
-                        typeof itemImages !== "undefined" && profile?.profile_pet_name
-                                    ? itemImages[profile.profile_pet_name]
-                                                : "";
-
-                                                    if (imageUrl) {
-                                                            const image = document.createElement("img");
-                                                                    image.src = imageUrl;
-                                                                            image.alt = "";
-                                                                                    joinYourAvatar.appendChild(image);
-                                                                                        } else {
-                                                                                                joinYourAvatar.textContent = "?";
-                                                                                                    }
-                                                                                                    }
+            joinYourAvatar.textContent = "?";
+            }
+       
         
         
         
