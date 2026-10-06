@@ -3924,107 +3924,103 @@ FLIP-ROWS so it loads after legacy inline styles. */
                                 max-height: none !important;
                                     object-fit: cover !important;
                                     }
- /* Old Kd King Profile Effect */
- .kk-row-avatar-old-kd {
-     position: relative !important;
-         overflow: visible !important;
-             border-radius: 50% !important;
-                 border: 3px solid #e4b52f !important;
-                     box-shadow:
-                             0 0 5px rgba(255, 205, 60, 0.9),
-                                     0 0 10px rgba(255, 190, 40, 0.45) !important;
-                                         background: #111827 !important;
-                                         }
+  /* Old Kd King Profile Effect */
+  .kk-row-avatar-old-kd {
+      position: relative !important;
+          overflow: visible !important;
+              border: none !important;
+              }
 
-                                         /* Keep the dog clipped inside the circular PFP */
-                                         .kk-row-avatar-old-kd img {
-                                             position: absolute !important;
-                                                 left: 50% !important;
-                                                     top: 50% !important;
-                                                         width: 115% !important;
-                                                             height: 115% !important;
-                                                                 max-width: none !important;
-                                                                     max-height: none !important;
-                                                                         transform: translate(-50%, -50%) !important;
-                                                                             object-fit: cover !important;
-                                                                                 border-radius: 50% !important;
-                                                                                 }
+              /* Gold ring ABOVE the dog image */
+              .kk-row-avatar-old-kd::after {
+                  content: "" !important;
+                      position: absolute !important;
+                          inset: -2px !important;
+                              border: 3px solid #e4b52f !important;
+                                  border-radius: 50% !important;
+                                      box-shadow:
+                                              0 0 5px rgba(255, 205, 60, 0.8),
+                                                      0 0 9px rgba(255, 190, 40, 0.35) !important;
+                                                          pointer-events: none !important;
+                                                              z-index: 10 !important;
+                                                              }
 
-                                                                                 /* Flat royal crown */
-                                                                                 .kk-old-kd-crown {
-                                                                                     position: absolute !important;
-                                                                                         z-index: 20 !important;
-                                                                                             left: 50% !important;
-                                                                                                 top: -14px !important;
-                                                                                                     transform: translateX(-50%) !important;
-                                                                                                         width: 34px !important;
-                                                                                                             height: 15px !important;
-                                                                                                                 background: linear-gradient(
-                                                                                                                         to bottom,
-                                                                                                                                 #f8d65b,
-                                                                                                                                         #d39d20
-                                                                                                                                             ) !important;
-                                                                                                                                                 border: 1px solid #f9dc6a !important;
-                                                                                                                                                     border-radius: 2px 2px 4px 4px !important;
-                                                                                                                                                         box-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
-                                                                                                                                                         }
+                                                              /* Old Kd dog */
+                                                              .kk-row-avatar-old-kd img {
+                                                                  position: absolute !important;
+                                                                      left: 50% !important;
+                                                                          top: 50% !important;
+                                                                              width: 115% !important;
+                                                                                  height: 115% !important;
+                                                                                      max-width: none !important;
+                                                                                          max-height: none !important;
+                                                                                              transform: translate(-50%, -50%) !important;
+                                                                                                  object-fit: cover !important;
+                                                                                                      border-radius: 50% !important;
+                                                                                                      }
 
-                                                                                                                                                         /* Three real crown points */
-                                                                                                                                                         .kk-old-kd-crown::before {
-                                                                                                                                                             content: "" !important;
-                                                                                                                                                                 position: absolute !important;
-                                                                                                                                                                     left: 2px !important;
-                                                                                                                                                                         top: -9px !important;
-                                                                                                                                                                             width: 30px !important;
-                                                                                                                                                                                 height: 14px !important;
-                                                                                                                                                                                     background: #e0ad2c !important;
-                                                                                                                                                                                         clip-path: polygon(
-                                                                                                                                                                                                 0 100%,
-                                                                                                                                                                                                         7% 15%,
-                                                                                                                                                                                                                 50% 70%,
-                                                                                                                                                                                                                         93% 15%,
-                                                                                                                                                                                                                                 100% 100%
-                                                                                                                                                                                                                                     ) !important;
-                                                                                                                                                                                                                                     }
+                                                                                                      /* VERY FLAT crown */
+                                                                                                      .kk-old-kd-crown {
+                                                                                                          position: absolute !important;
+                                                                                                              z-index: 20 !important;
+                                                                                                                  left: 50% !important;
+                                                                                                                      top: -8px !important;
+                                                                                                                          transform: translateX(-50%) !important;
+                                                                                                                              width: 32px !important;
+                                                                                                                                  height: 7px !important;
+                                                                                                                                      background: linear-gradient(
+                                                                                                                                              to bottom,
+                                                                                                                                                      #f7d45b,
+                                                                                                                                                              #c99520
+                                                                                                                                                                  ) !important;
+                                                                                                                                                                      border: 1px solid #f5d866 !important;
+                                                                                                                                                                          border-radius: 2px !important;
+                                                                                                                                                                          }
 
-                                                                                                                                                                                                                                     /* Crown base highlight */
-                                                                                                                                                                                                                                     .kk-old-kd-crown::after {
-                                                                                                                                                                                                                                         content: "" !important;
-                                                                                                                                                                                                                                             position: absolute !important;
-                                                                                                                                                                                                                                                 left: 3px !important;
-                                                                                                                                                                                                                                                     right: 3px !important;
-                                                                                                                                                                                                                                                         bottom: 2px !important;
-                                                                                                                                                                                                                                                             height: 2px !important;
-                                                                                                                                                                                                                                                                 background: #ffe58a !important;
-                                                                                                                                                                                                                                                                     border-radius: 2px !important;
-                                                                                                                                                                                                                                                                     }
+                                                                                                                                                                          /* Three tiny crown points */
+                                                                                                                                                                          .kk-old-kd-crown::before {
+                                                                                                                                                                              content: "" !important;
+                                                                                                                                                                                  position: absolute !important;
+                                                                                                                                                                                      left: 2px !important;
+                                                                                                                                                                                          top: -5px !important;
+                                                                                                                                                                                              width: 28px !important;
+                                                                                                                                                                                                  height: 7px !important;
+                                                                                                                                                                                                      background: #dfad2c !important;
+                                                                                                                                                                                                          clip-path: polygon(
+                                                                                                                                                                                                                  0 100%,
+                                                                                                                                                                                                                          8% 0,
+                                                                                                                                                                                                                                  50% 65%,
+                                                                                                                                                                                                                                          92% 0,
+                                                                                                                                                                                                                                                  100% 100%
+                                                                                                                                                                                                                                                      ) !important;
+                                                                                                                                                                                                                                                      }
 
-                                                                                                                                                                                                                                                                     /* Blue gems */
-                                                                                                                                                                                                                                                                     .kk-crown-gem {
-                                                                                                                                                                                                                                                                         position: absolute !important;
-                                                                                                                                                                                                                                                                             z-index: 30 !important;
-                                                                                                                                                                                                                                                                                 width: 4px !important;
-                                                                                                                                                                                                                                                                                     height: 4px !important;
-                                                                                                                                                                                                                                                                                         border-radius: 50% !important;
-                                                                                                                                                                                                                                                                                             background: #3fb8ff !important;
-                                                                                                                                                                                                                                                                                                 border: 1px solid #bce9ff !important;
-                                                                                                                                                                                                                                                                                                     box-shadow: 0 0 3px rgba(63,184,255,.9) !important;
-                                                                                                                                                                                                                                                                                                     }
+                                                                                                                                                                                                                                                      /* 3 blue gems */
+                                                                                                                                                                                                                                                      .kk-crown-gem {
+                                                                                                                                                                                                                                                          position: absolute !important;
+                                                                                                                                                                                                                                                              z-index: 30 !important;
+                                                                                                                                                                                                                                                                  width: 3px !important;
+                                                                                                                                                                                                                                                                      height: 3px !important;
+                                                                                                                                                                                                                                                                          border-radius: 50% !important;
+                                                                                                                                                                                                                                                                              background: #3fb8ff !important;
+                                                                                                                                                                                                                                                                                  border: 1px solid #bce9ff !important;
+                                                                                                                                                                                                                                                                                      box-shadow: 0 0 3px rgba(63,184,255,.8) !important;
+                                                                                                                                                                                                                                                                                      }
 
-                                                                                                                                                                                                                                                                                                     .kk-crown-gem:nth-child(1) {
-                                                                                                                                                                                                                                                                                                         left: 7px !important;
-                                                                                                                                                                                                                                                                                                             top: 0px !important;
-                                                                                                                                                                                                                                                                                                             }
+                                                                                                                                                                                                                                                                                      .kk-crown-gem:nth-child(1) {
+                                                                                                                                                                                                                                                                                          left: 6px !important;
+                                                                                                                                                                                                                                                                                              top: 1px !important;
+                                                                                                                                                                                                                                                                                              }
 
-                                                                                                                                                                                                                                                                                                             .kk-crown-gem:nth-child(2) {
-                                                                                                                                                                                                                                                                                                                 left: 15px !important;
-                                                                                                                                                                                                                                                                                                                     top: -4px !important;
-                                                                                                                                                                                                                                                                                                                     }
+                                                                                                                                                                                                                                                                                              .kk-crown-gem:nth-child(2) {
+                                                                                                                                                                                                                                                                                                  left: 14px !important;
+                                                                                                                                                                                                                                                                                                      top: -2px !important;
+                                                                                                                                                                                                                                                                                                      }
 
-                                                                                                                                                                                                                                                                                                                     .kk-crown-gem:nth-child(3) {
-                                                                                                                                                                                                                                                                                                                         right: 7px !important;
-                                                                                                                                                                                                                                                                                                                             top: 0px !important;
-                                                                                                                                                                                                                                                                                                                             }                                   
+                                                                                                                                                                                                                                                                                                      .kk-crown-gem:nth-child(3) {
+                                                                                                                                                                                                                                                                                                          right: 6px !important;
+                                                                                                                                                                                                                                                                                                              top: 1px !important;
+                                                                                                                                                                                                                                                                                                              }                       
         
                
   
