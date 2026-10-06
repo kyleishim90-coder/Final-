@@ -3913,6 +3913,18 @@ FLIP-ROWS so it loads after legacy inline styles. */
    .kydno-result-profile {
         background: transparent !important;
         }
+        .kk-row-avatar-old-kd {
+                overflow: hidden !important;
+                }
+
+                .kk-row-avatar-old-kd img {
+                    width: 115% !important;
+                        height: 115% !important;
+                            max-width: none !important;
+                                max-height: none !important;
+                                    object-fit: cover !important;
+                                    }
+        
                
   
                                                                                                            

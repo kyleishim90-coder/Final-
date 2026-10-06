@@ -2915,7 +2915,7 @@ async function loadActiveFlips() {
         flipCard.className = "active-flip-card";
         flipCard.innerHTML = `
             <div class="kk-row-player">
-                <div class="kk-row-avatar">
+                <div class="kk-row-avatar ${hostProfilePet === "Old Kd" ? "kk-row-avatar-old-kd" : ""}">
                         ${
                                 hostProfileImage
                                             ? `<img src="${hostProfileImage}" alt="">`
