@@ -419,6 +419,7 @@ async function showKydnoFlipResultPopup() {
 
                               const didWin = user && winnerId === user.id;
                               const hostId = String(window.kydnoLastFlipHostId || "");
+                              const joinerId = String(window.kydnoLastFlipJoinerId || "");
 
                               const [hostProfileResult, joinerProfileResult] = await Promise.all([
                                   hostId
@@ -429,12 +430,12 @@ async function showKydnoFlipResultPopup() {
                                                                                           .maybeSingle()
                                                                                                   : Promise.resolve({ data: null }),
 
-                                                                                                      user?.id
-                                                                                                              ? supabaseClient
-                                                                                                                          .from("profiles")
-                                                                                                                                      .select("username, profile_pet_name")
-                                                                                                                                                  .eq("id", user.id)
-                                                                                                                                                              .maybeSingle()
+                                                                                                      joinerId
+                                                                                                          ? supabaseClient
+                                                                                                                  .from("profiles")
+                                                                                                                          .select("username, profile_pet_name")
+                                                                                                                                  .eq("id", joinerId)
+                                                                                                                                          .maybeSingle()
                                                                                                                                                                       : Promise.resolve({ data: null })
                                                                                                                                                                       ]);
                                                                                                                                                                       const valueElement = document.getElementById("kydno-result-value");
@@ -613,6 +614,10 @@ async function showKydnoFlipResultPopup() {
 
                                                                                                                           window.kydnoLastFlipWinnerId = payload.winnerId || "";
                                                                                                                                   window.kydnoLastFlipHostId = payload.hostId || "";
+                                                                                                                                  window.kydnoLastFlipJoinerId = payload.joinerId || "";
+                                                                                                                                  window.kydnoLastFlipValueWon =
+                                                                                                                                      (Number(payload.hostValue) || 0) +
+                                                                                                                                          (Number(payload.joinerValue) || 0);
 
                                                                                                                                           window.kydnoLastFlipHostName = payload.hostName || "";
                                                                                                                                                   window.kydnoLastFlipHostValue = Number(payload.hostValue) || 0;

@@ -3226,6 +3226,7 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                                                                     payload: {
                                                                                                 flipId: flip.id,
                                                                                                             hostId: flip.host_id || "",
+                                                                                                            joinerId: (await supabaseClient.auth.getUser()).data.user?.id || "",
                                                                                                                         resultSide: String(resultSide).toLowerCase().trim(),
                                                                                                                                     winnerId: joinResult.winner_id || "",
                                                                                                                                                 startAt: syncStartAt,
