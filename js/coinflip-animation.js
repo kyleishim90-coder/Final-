@@ -589,4 +589,57 @@ async function showKydnoFlipResultPopup() {
                                                                                                                                       });
                                                                                                                                           }
                                                                                                                                           });
+  // =========================================================
+  // KYDNO KORE - SYNCHRONIZED FLIP LISTENER
+  // =========================================================
+
+  window.kydnoFlipSyncChannel = supabaseClient
+      .channel("kydno-flip-sync")
+          .on("broadcast", { event: "flip_start" }, async ({ payload }) => {
+                  if (!payload?.flipId) return;
+
+                          const {
+                                      data: { user }
+                                              } = await supabaseClient.auth.getUser();
+
+                                                      // Only the host should receive the incoming animation trigger.
+                                                              if (!user?.id || String(user.id) !== String(payload.hostId)) {
+                                                                          return;
+                                                                                  }
+
+                                                                                          window.kydnoLastFlipResult = String(payload.resultSide || "")
+                                                                                                      .toLowerCase()
+                                                                                                                  .trim();
+
+                                                                                                                          window.kydnoLastFlipWinnerId = payload.winnerId || "";
+                                                                                                                                  window.kydnoLastFlipHostId = payload.hostId || "";
+
+                                                                                                                                          window.kydnoLastFlipHostName = payload.hostName || "";
+                                                                                                                                                  window.kydnoLastFlipHostValue = Number(payload.hostValue) || 0;
+
+                                                                                                                                                          window.kydnoLastFlipJoinerName = payload.joinerName || "";
+                                                                                                                                                                  window.kydnoLastFlipJoinerValue = Number(payload.joinerValue) || 0;
+
+                                                                                                                                                                          window.kydnoLastFlipHostItems = Array.isArray(payload.hostItems)
+                                                                                                                                                                                      ? payload.hostItems
+                                                                                                                                                                                                  : [];
+
+                                                                                                                                                                                                          window.kydnoLastFlipJoinerItems = Array.isArray(payload.joinerItems)
+                                                                                                                                                                                                                      ? payload.joinerItems
+                                                                                                                                                                                                                                  : [];
+
+                                                                                                                                                                                                                                          const resultSide = window.kydnoLastFlipResult;
+
+                                                                                                                                                                                                                                                  if (resultSide !== "heads" && resultSide !== "tails") {
+                                                                                                                                                                                                                                                              return;
+                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                              const startAt = Number(payload.startAt) || Date.now();
+                                                                                                                                                                                                                                                                                      const delay = Math.max(0, startAt - Date.now());
+
+                                                                                                                                                                                                                                                                                              setTimeout(() => {
+                                                                                                                                                                                                                                                                                                          window.startKydnoCoinflip(resultSide);
+                                                                                                                                                                                                                                                                                                                  }, delay);
+                                                                                                                                                                                                                                                                                                                      })
+                                                                                                                                                                                                                                                                                                                          .subscribe();                                                                                                                                        
                                                 

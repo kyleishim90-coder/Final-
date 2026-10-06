@@ -3218,8 +3218,31 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                                     (Number(flip.total_value) || 0) + (Number(selectedValue) || 0);
 
                                                 if (resultSide) {
-                                                    window.startKydnoCoinflip(resultSide);
-                                                    }
+                                                        const syncStartAt = Date.now() + 1200;
+
+                                                            await window.kydnoFlipSyncChannel.send({
+                                                                    type: "broadcast",
+                                                                            event: "flip_start",
+                                                                                    payload: {
+                                                                                                flipId: flip.id,
+                                                                                                            hostId: flip.host_id || "",
+                                                                                                                        resultSide: String(resultSide).toLowerCase().trim(),
+                                                                                                                                    winnerId: joinResult.winner_id || "",
+                                                                                                                                                startAt: syncStartAt,
+
+                                                                                                                                                            hostName: window.kydnoLastFlipHostName || "",
+                                                                                                                                                                        hostValue: Number(window.kydnoLastFlipHostValue) || 0,
+                                                                                                                                                                                    hostItems: window.kydnoLastFlipHostItems || [],
+
+                                                                                                                                                                                                joinerName: window.kydnoLastFlipJoinerName || "You",
+                                                                                                                                                                                                            joinerValue: Number(window.kydnoLastFlipJoinerValue) || 0,
+                                                                                                                                                                                                                        joinerItems: window.kydnoLastFlipJoinerItems || []
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                    });
+
+                                                                                                                                                                                                                                        window.startKydnoCoinflip(resultSide);
+                                                                                                                                                                                                                                        }
+                                                
 
                                             closeCreateFlipPanel();
                                             return;
