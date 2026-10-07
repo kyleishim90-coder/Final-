@@ -312,7 +312,28 @@ function landKydnoReel(track, reelElement, resultSide, reelNumber, currentY) {
 // INDIVIDUAL REEL LANDING
 // =========================================================
 
-function runKydnoSpinTest(forcedResult = null) {
+function createKydnoCoinSequence(forcedResult) {
+      const oppositeResult =
+              forcedResult === "heads" ? "tails" : "heads";
+
+                  const winningCount = Math.random() < 0.15
+                          ? 5
+                                  : Math.random() < 0.45
+                                              ? 4
+                                                          : 3;
+
+                                                              const reelResults = Array(5).fill(forcedResult);
+
+                                                                  for (let i = winningCount; i < 5; i++) {
+                                                                          reelResults[i] = oppositeResult;
+                                                                              }
+
+                                                                                  reelResults.sort(() => Math.random() - 0.5);
+
+                                                                                      return reelResults;
+                                                                                      }
+
+                                                                                      function runKydnoSpinTest(forcedResult = null, forcedSequence = null) {
   // Reset the reels first
   kydnoReelTracks.forEach((track) => {
     track.style.transition = "none";
@@ -344,21 +365,10 @@ function runKydnoSpinTest(forcedResult = null) {
       // Reel 5 gets the dramatic slowdown
 
       const durations = [1300, 1700, 2100, 2500, 4000];
-      const oppositeResult = forcedResult === "heads" ? "tails" : "heads";
-
-      const winningCount = Math.random() < 0.15
-        ? 5
-          : Math.random() < 0.45
-              ? 4
-                  : 3;
-
-                  const reelResults = Array(5).fill(forcedResult);
-
-                  for (let i = winningCount; i < 5; i++) {
-                    reelResults[i] = oppositeResult;
-                    }
-
-                    reelResults.sort(() => Math.random() - 0.5);
+      const reelResults = Array.isArray(forcedSequence)
+          && forcedSequence.length === 5
+              ? forcedSequence
+                  : createKydnoCoinSequence(forcedResult);
 
       kydnoReelTracks.forEach((track, index) => {
         const reelNumber = index + 1;
@@ -379,7 +389,7 @@ function runKydnoSpinTest(forcedResult = null) {
 
 // Allows us to restart the test later
 window.runKydnoSpinTest = runKydnoSpinTest;
-window.startKydnoCoinflip = function (resultSide) {
+window.startKydnoCoinflip = function (resultSide, coinSequence = null) {
   const normalizedResult = String(resultSide || "")
     .toLowerCase()
     .trim();
@@ -393,8 +403,7 @@ window.startKydnoCoinflip = function (resultSide) {
   if (animationPopup) {
       animationPopup.style.display = "flex";
       }
-
-  runKydnoSpinTest(normalizedResult);
+runKydnoSpinTest(normalizedResult, coinSequence);
 };
 // =========================================================
 // KYDNO FLIP RESULT POPUP
@@ -414,12 +423,18 @@ async function showKydnoFlipResultPopup() {
                     const winnerId = String(window.kydnoLastFlipWinnerId || "");
 
                       const {
-                          data: { user }
+                            data: { user }
                             } = await supabaseClient.auth.getUser();
 
-                              const didWin = user && winnerId === user.id;
-                              const hostId = String(window.kydnoLastFlipHostId || "");
-                              const joinerId = String(window.kydnoLastFlipJoinerId || "");
+                            const didWin = user && winnerId === user.id;
+                            const hostId = String(window.kydnoLastFlipHostId || "");
+
+                            const joinerId =
+                                String(window.kydnoLastFlipJoinerId || "") ||
+                                    (user?.id && String(user.id) !== hostId ? String(user.id) : "");
+                          
+                        
+                              
 
                               const [hostProfileResult, joinerProfileResult] = await Promise.all([
                                   hostId

@@ -3228,6 +3228,7 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                                                                                             hostId: flip.host_id || "",
                                                                                                             joinerId: (await supabaseClient.auth.getUser()).data.user?.id || "",
                                                                                                                         resultSide: String(resultSide).toLowerCase().trim(),
+                                                                                                                        coinSequence: coinSequence,
                                                                                                                                     winnerId: joinResult.winner_id || "",
                                                                                                                                                 startAt: syncStartAt,
 
