@@ -3219,6 +3219,9 @@ const selectedJoinItemIds = selectedJoinItemButtons
 
                                                 if (resultSide) {
                                                         const syncStartAt = Date.now() + 1200;
+                                                        const coinSequence = createKydnoCoinSequence(
+                                                            String(resultSide).toLowerCase().trim()
+                                                            );
 
                                                             await window.kydnoFlipSyncChannel.send({
                                                                     type: "broadcast",
@@ -3242,7 +3245,7 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                                                                                                                                                                                                                 }
                                                                                                                                                                                                                                     });
 
-                                                                                                                                                                                                                                        window.startKydnoCoinflip(resultSide);
+                                                                                                                                                                                                                                        window.startKydnoCoinflip(resultSide, coinSequence);
                                                                                                                                                                                                                                         }
                                                 
 
