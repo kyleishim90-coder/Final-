@@ -5181,6 +5181,79 @@ body.kk-modal-open { overflow:hidden !important; }
   overflow-y:auto !important; overflow-x:hidden !important;
   -webkit-overflow-scrolling:touch !important; touch-action:pan-y !important;
 }
+/* =========================================================
+   KYDNO KORE — CLEAN FLIP LOBBY HEADER
+      ========================================================= */
+
+      #live-flips-page .active-flips-panel {
+          width: 100% !important;
+              max-width: 1100px !important;
+                  margin: 0 auto !important;
+                  }
+
+                  #live-flips-page .active-flips-header {
+                      width: 100% !important;
+                          display: flex !important;
+                              justify-content: center !important;
+                                  text-align: center !important;
+                                      padding: 18px 0 12px !important;
+                                          margin: 0 !important;
+                                              border-bottom: 1px solid rgba(255,255,255,0.16) !important;
+                                              }
+
+                                              #live-flips-page .active-flips-header > div {
+                                                  width: 100% !important;
+                                                      text-align: center !important;
+                                                      }
+
+                                                      #live-flips-page .active-flips-header h2 {
+                                                          margin: 0 !important;
+                                                              text-align: center !important;
+                                                                  font-size: 24px !important;
+                                                                  }
+
+                                                                  #live-flips-page .active-flips-header span {
+                                                                      display: none !important;
+                                                                      }
+
+                                                                      /* Recent Results sits directly underneath Active Flips */
+                                                                      #live-flips-page .recent-results-panel {
+                                                                          width: 100% !important;
+                                                                              max-width: 1100px !important;
+                                                                                  margin: 0 auto !important;
+                                                                                  }
+
+                                                                                  #live-flips-page .recent-results-header {
+                                                                                      width: 100% !important;
+                                                                                          display: flex !important;
+                                                                                              justify-content: center !important;
+                                                                                                  text-align: center !important;
+                                                                                                      padding: 16px 0 12px !important;
+                                                                                                          margin: 0 !important;
+                                                                                                              border-bottom: 1px solid rgba(255,255,255,0.16) !important;
+                                                                                                              }
+
+                                                                                                              #live-flips-page .recent-results-header > div {
+                                                                                                                  width: 100% !important;
+                                                                                                                      text-align: center !important;
+                                                                                                                      }
+
+                                                                                                                      #live-flips-page .recent-results-header h2 {
+                                                                                                                          margin: 0 !important;
+                                                                                                                              text-align: center !important;
+                                                                                                                                  font-size: 21px !important;
+                                                                                                                                  }
+
+                                                                                                                                  #live-flips-page .recent-results-header span {
+                                                                                                                                      display: none !important;
+                                                                                                                                      }
+
+                                                                                                                                      /* Keep the actual rows centered underneath */
+                                                                                                                                      #live-flips-page .active-flips-list,
+                                                                                                                                      #live-flips-page .recent-results-list {
+                                                                                                                                          width: 100% !important;
+                                                                                                                                              margin: 0 auto !important;
+                                                                                                                                              }
 </style>
 <script id="KK-CLEAN-CANCEL-HANDLER">
 async function cancelWaitingFlip(flipId, button, adminMode = false) {
@@ -5337,79 +5410,7 @@ document.addEventListener("click", function(event) {
                                                                                                                             </div>
                                                                                                                             
                                                                                                                             </div>
-                                                                                                                            /* =========================================================
-                                                                                                                               KYDNO KORE — CLEAN FLIP LOBBY HEADER
-                                                                                                                                  ========================================================= */
-
-                                                                                                                                  #live-flips-page .active-flips-panel {
-                                                                                                                                      width: 100% !important;
-                                                                                                                                          max-width: 1100px !important;
-                                                                                                                                              margin: 0 auto !important;
-                                                                                                                                              }
-
-                                                                                                                                              #live-flips-page .active-flips-header {
-                                                                                                                                                  width: 100% !important;
-                                                                                                                                                      display: flex !important;
-                                                                                                                                                          justify-content: center !important;
-                                                                                                                                                              text-align: center !important;
-                                                                                                                                                                  padding: 18px 0 12px !important;
-                                                                                                                                                                      margin: 0 !important;
-                                                                                                                                                                          border-bottom: 1px solid rgba(255,255,255,0.16) !important;
-                                                                                                                                                                          }
-
-                                                                                                                                                                          #live-flips-page .active-flips-header > div {
-                                                                                                                                                                              width: 100% !important;
-                                                                                                                                                                                  text-align: center !important;
-                                                                                                                                                                                  }
-
-                                                                                                                                                                                  #live-flips-page .active-flips-header h2 {
-                                                                                                                                                                                      margin: 0 !important;
-                                                                                                                                                                                          text-align: center !important;
-                                                                                                                                                                                              font-size: 24px !important;
-                                                                                                                                                                                              }
-
-                                                                                                                                                                                              #live-flips-page .active-flips-header span {
-                                                                                                                                                                                                  display: none !important;
-                                                                                                                                                                                                  }
-
-                                                                                                                                                                                                  /* Recent Results sits directly underneath Active Flips */
-                                                                                                                                                                                                  #live-flips-page .recent-results-panel {
-                                                                                                                                                                                                      width: 100% !important;
-                                                                                                                                                                                                          max-width: 1100px !important;
-                                                                                                                                                                                                              margin: 0 auto !important;
-                                                                                                                                                                                                              }
-
-                                                                                                                                                                                                              #live-flips-page .recent-results-header {
-                                                                                                                                                                                                                  width: 100% !important;
-                                                                                                                                                                                                                      display: flex !important;
-                                                                                                                                                                                                                          justify-content: center !important;
-                                                                                                                                                                                                                              text-align: center !important;
-                                                                                                                                                                                                                                  padding: 16px 0 12px !important;
-                                                                                                                                                                                                                                      margin: 0 !important;
-                                                                                                                                                                                                                                          border-bottom: 1px solid rgba(255,255,255,0.16) !important;
-                                                                                                                                                                                                                                          }
-
-                                                                                                                                                                                                                                          #live-flips-page .recent-results-header > div {
-                                                                                                                                                                                                                                              width: 100% !important;
-                                                                                                                                                                                                                                                  text-align: center !important;
-                                                                                                                                                                                                                                                  }
-
-                                                                                                                                                                                                                                                  #live-flips-page .recent-results-header h2 {
-                                                                                                                                                                                                                                                      margin: 0 !important;
-                                                                                                                                                                                                                                                          text-align: center !important;
-                                                                                                                                                                                                                                                              font-size: 21px !important;
-                                                                                                                                                                                                                                                              }
-
-                                                                                                                                                                                                                                                              #live-flips-page .recent-results-header span {
-                                                                                                                                                                                                                                                                  display: none !important;
-                                                                                                                                                                                                                                                                  }
-
-                                                                                                                                                                                                                                                                  /* Keep the actual rows centered underneath */
-                                                                                                                                                                                                                                                                  #live-flips-page .active-flips-list,
-                                                                                                                                                                                                                                                                  #live-flips-page .recent-results-list {
-                                                                                                                                                                                                                                                                      width: 100% !important;
-                                                                                                                                                                                                                                                                          margin: 0 auto !important;
-                                                                                                                                                                                                                                                                          }
+                                                                                                                            
                                                                                                                             <script src="js/coinflip-animation.js"></script>
 </body>
 </html>
