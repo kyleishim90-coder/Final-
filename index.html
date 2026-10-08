@@ -1866,6 +1866,20 @@ Create one to get started!
 </div>
 </div>
 </div>
+<!-- =====================================
+      RECENT COMPLETED FLIPS
+           ===================================== -->
+           <div class="recent-results-panel" id="recent-results-panel">
+               <div class="recent-results-header">
+                       <div>
+                                   <h2>Recent Results</h2>
+                                               <span id="recent-results-count">0 results</span>
+                                                       </div>
+                                                           </div>
+                                                           
+                                                               <div class="recent-results-list" id="recent-results-list">
+                                                                   </div>
+                                                                   </div>
 <!-- Small info section -->
 <div class="flips-bottom-info">
 <div class="flips-info-card">
@@ -2813,6 +2827,63 @@ console.log("Selected flip side:", selectedFlipSide);
 // =====================================
 
 const activeFlipsList = document.getElementById("active-flips-list");
+const recentResultsList = document.getElementById("recent-results-list");
+const recentResultsCount = document.getElementById("recent-results-count");
+
+async function loadRecentResults() {
+    if (!recentResultsList) return;
+
+        const { data: results, error } = await supabaseClient
+                .from("recent_flip_results")
+                        .select("*")
+                                .order("created_at", { ascending: false })
+                                        .limit(10);
+
+                                            if (error) {
+                                                    console.error("Failed to load recent results:", error);
+                                                            return;
+                                                                }
+
+                                                                    recentResultsList.innerHTML = "";
+
+                                                                        if (!results || results.length === 0) {
+                                                                                if (recentResultsCount) {
+                                                                                            recentResultsCount.textContent = "0 results";
+                                                                                                    }
+                                                                                                            return;
+                                                                                                                }
+
+                                                                                                                    if (recentResultsCount) {
+                                                                                                                            recentResultsCount.textContent =
+                                                                                                                                        `${results.length} result${results.length === 1 ? "" : "s"}`;
+                                                                                                                                            }
+
+                                                                                                                                                results.forEach(result => {
+                                                                                                                                                        const resultRow = document.createElement("div");
+                                                                                                                                                                resultRow.className = "recent-result-row";
+                                                                                                                                                                        resultRow.dataset.flipId = result.flip_id;
+
+                                                                                                                                                                                resultRow.innerHTML = `
+                                                                                                                                                                                            <div class="recent-result-player">
+                                                                                                                                                                                                            ${result.host_name || "Unknown"}
+                                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                                                    <div class="recent-result-vs">
+                                                                                                                                                                                                                                                    VS
+                                                                                                                                                                                                                                                                </div>
+
+                                                                                                                                                                                                                                                                            <div class="recent-result-player">
+                                                                                                                                                                                                                                                                                            ${result.joiner_name || "Unknown"}
+                                                                                                                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                                                                                                                                    <button class="recent-result-view" type="button">
+                                                                                                                                                                                                                                                                                                                                    View Results
+                                                                                                                                                                                                                                                                                                                                                </button>
+                                                                                                                                                                                                                                                                                                                                                        `;
+
+                                                                                                                                                                                                                                                                                                                                                                recentResultsList.appendChild(resultRow);
+                                                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                                                    }
 
 async function loadActiveFlips() {
     if (!activeFlipsList) return;
@@ -2972,6 +3043,7 @@ async function loadActiveFlips() {
                                                                                                                                                             },
                                                                                                                                                                         () => {
                                                                                                                                                                                         loadActiveFlips();
+                                                                                                                                                                                        loadRecentResults();
                                                                                                                                                                                                     }
                                                                                                                                                                                                             )
                                                                                                                                                                                                                     .subscribe();
@@ -3197,6 +3269,7 @@ const selectedJoinItemIds = selectedJoinItemButtons
                         }
 
                         console.log("Successful coinflip result:", joinResult);
+                        
                         await loadActiveFlips();
 
                         const resultSide =
@@ -3205,6 +3278,24 @@ const selectedJoinItemIds = selectedJoinItemButtons
                                     joinResult.result ||
                                         joinResult.winner_side ||
                                             joinResult.flip_result;
+                                            // Save this completed flip to Recent Results
+                                            await supabaseClient
+                                                .from("recent_flip_results")
+                                                    .insert({
+                                                            flip_id: flip.id,
+                                                                    host_id: flip.host_id || null,
+                                                                            joiner_id: (await supabaseClient.auth.getUser()).data.user?.id || null,
+                                                                                    host_name: flip.host_name || "",
+                                                                                            joiner_name: "You",
+                                                                                                    winning_side: String(resultSide || "").toLowerCase().trim(),
+                                                                                                            host_items: window.joinFlipOpponentItems || [],
+                                                                                                                    joiner_items: selectedJoinItemButtons.map(item => ({
+                                                                                                                                id: item.dataset.itemId,
+                                                                                                                                            name: item.dataset.itemName || "Item",
+                                                                                                                                                        value: Number(item.dataset.itemValue) || 0,
+                                                                                                                                                                    image: item.dataset.itemImage || ""
+                                                                                                                                                                            }))
+                                                                                                                                                                                });
 
                                         window.kydnoLastFlipResult = String(resultSide || "")
                                             .toLowerCase()
