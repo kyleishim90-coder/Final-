@@ -2944,17 +2944,38 @@ async function loadActiveFlips() {
         activeFlipsList.appendChild(flipCard);
     });
 }
-document.addEventListener("click", async (event) => {
-    const joinButton = event.target.closest(".join-active-flip-button");
-    if (!joinButton) return;
+                    document.addEventListener("click", async (event) => {
+                        const joinButton = event.target.closest(".join-active-flip-button");
+                            if (!joinButton) return;
 
-    const flipId = joinButton.dataset.flipId;
-    const flipTargetValue = Number(joinButton.dataset.flipTotalValue) || 0;
-    window.selectedJoinFlipId = flipId;
-    window.joinFlipTargetValue = flipTargetValue;
-    // Existing Join Flip flow below continues to handle opening the join panel.
-    if (typeof openJoinFlipPanel === "function") openJoinFlipPanel(flipId);
-});
+                                const flipId = joinButton.dataset.flipId;
+                                    const flipTargetValue = Number(joinButton.dataset.flipTotalValue) || 0;
+                                        window.selectedJoinFlipId = flipId;
+                                            window.joinFlipTargetValue = flipTargetValue;
+
+                                                // Existing Join Flip flow below continues to handle opening the join panel.
+                                                    if (typeof openJoinFlipPanel === "function") openJoinFlipPanel(flipId);
+                                                    });
+                                                    // =====================================
+                                                    // ACTIVE FLIPS REALTIME REFRESH
+                                                    // =====================================
+
+                                                    if (!window.kydnoActiveFlipsRealtimeChannel) {
+                                                        window.kydnoActiveFlipsRealtimeChannel = supabaseClient
+                                                                .channel("kydno-active-flips-realtime")
+                                                                        .on(
+                                                                                    "postgres_changes",
+                                                                                                {
+                                                                                                                event: "*",
+                                                                                                                                schema: "public",
+                                                                                                                                                table: "flips"
+                                                                                                                                                            },
+                                                                                                                                                                        () => {
+                                                                                                                                                                                        loadActiveFlips();
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                            )
+                                                                                                                                                                                                                    .subscribe();
+                                                                                                                                                                                                                    }
 
 // =====================================
 // DUEL FLIPS — INDEPENDENT LOBBY
