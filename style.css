@@ -3925,83 +3925,62 @@ FLIP-ROWS so it loads after legacy inline styles. */
                                     object-fit: cover !important;
                 }
    
-                /* RECENT RESULTS — match Active Flips card layout */
+
+                /* RECENT RESULTS — player profiles and centered winning coin */
                 .recent-result-row.active-flip-card {
                     display: grid !important;
-                        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto !important;
-                            align-items: center !important;
-                                gap: 18px !important;
-                                    min-height: 120px !important;
-                                    }
+                        grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr) !important;
+                            grid-template-rows: auto auto !important;
+                                align-items: center !important;
+                                    gap: 14px 12px !important;
+                                        min-height: 190px !important;
+                                            padding: 18px !important;
+                                            }
 
-                                    .recent-result-row .recent-result-player {
-                                        min-width: 0 !important;
-                                            color: #f4f8ff !important;
-                                                font-size: 15px !important;
-                                                    font-weight: 700 !important;
-                                                        overflow-wrap: anywhere !important;
-                                                        }
+                                            .recent-result-row .recent-result-player {
+                                                min-width: 0 !important;
+                                                    display: flex !important;
+                                                        flex-direction: column !important;
+                                                            align-items: center !important;
+                                                                justify-content: center !important;
+                                                                    gap: 6px !important;
+                                                                        color: #f4f8ff !important;
+                                                                            font-size: 13px !important;
+                                                                                font-weight: 700 !important;
+                                                                                    text-align: center !important;
+                                                                                        overflow-wrap: anywhere !important;
+                                                                                        }
 
-                                                        .recent-result-row .recent-result-player:first-child {
-                                                            text-align: left !important;
-                                                            }
+                                                                                        .recent-result-row .recent-result-vs {
+                                                                                            grid-column: 2 !important;
+                                                                                                grid-row: 1 !important;
+                                                                                                    align-self: center !important;
+                                                                                                        justify-self: center !important;
+                                                                                                            color: #9bcfff !important;
+                                                                                                                font-size: 14px !important;
+                                                                                                                    font-weight: 900 !important;
+                                                                                                                        text-align: center !important;
+                                                                                                                        }
 
-                                                            .recent-result-row .recent-result-player:nth-of-type(2) {
-                                                                text-align: right !important;
-                                                                }
+                                                                                                                        .recent-result-row .recent-result-view {
+                                                                                                                            grid-column: 1 / -1 !important;
+                                                                                                                                grid-row: 2 !important;
+                                                                                                                                    width: 100% !important;
+                                                                                                                                        min-height: 42px !important;
+                                                                                                                                            padding: 10px 15px !important;
+                                                                                                                                                border: 1px solid rgba(85, 170, 255, .4) !important;
+                                                                                                                                                    border-radius: 10px !important;
+                                                                                                                                                        background: linear-gradient(135deg, #2f72b9, #204d8d) !important;
+                                                                                                                                                            color: #fff !important;
+                                                                                                                                                                font-weight: 800 !important;
+                                                                                                                                                                    cursor: pointer !important;
+                                                                                                                                                                    }
 
-                                                                .recent-result-row .recent-result-vs {
-                                                                    color: #9bcfff !important;
-                                                                        font-size: 14px !important;
-                                                                            font-weight: 900 !important;
-                                                                                text-align: center !important;
-                                                                                }
-
-                                                                                .recent-result-row .recent-result-view {
-                                                                                    min-height: 40px !important;
-                                                                                        padding: 10px 15px !important;
-                                                                                            border: 1px solid rgba(85, 170, 255, .4) !important;
-                                                                                                border-radius: 10px !important;
-                                                                                                    background: linear-gradient(135deg, #2f72b9, #204d8d) !important;
-                                                                                                        color: #fff !important;
-                                                                                                            font-weight: 800 !important;
-                                                                                                                white-space: nowrap !important;
-                                                                                                                    cursor: pointer !important;
-                                                                                                                    }
-
-                                                                                                                    @media (max-width: 600px) {
-                                                                                                                        .recent-result-row.active-flip-card {
-                                                                                                                                grid-template-columns: minmax(0, 1fr) auto !important;
-                                                                                                                                        gap: 12px !important;
-                                                                                                                                                padding: 14px !important;
-                                                                                                                                                    }
-
-                                                                                                                                                        .recent-result-row .recent-result-player:first-child {
-                                                                                                                                                                grid-column: 1 !important;
-                                                                                                                                                                        grid-row: 1 !important;
-                                                                                                                                                                            }
-
-                                                                                                                                                                                .recent-result-row .recent-result-vs {
-                                                                                                                                                                                        grid-column: 2 !important;
-                                                                                                                                                                                                grid-row: 1 / span 2 !important;
+                                                                                                                                                                    @media (max-width: 600px) {
+                                                                                                                                                                        .recent-result-row.active-flip-card {
+                                                                                                                                                                                grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr) !important;
+                                                                                                                                                                                        gap: 12px 6px !important;
+                                                                                                                                                                                                padding: 12px !important;
                                                                                                                                                                                                     }
-
-                                                                                                                                                                                                        .recent-result-row .recent-result-player:nth-of-type(2) {
-                                                                                                                                                                                                                grid-column: 1 !important;
-                                                                                                                                                                                                                        grid-row: 2 !important;
-                                                                                                                                                                                                                                text-align: left !important;
-                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                        .recent-result-row .recent-result-view {
-                                                                                                                                                                                                                                                grid-column: 1 / -1 !important;
-                                                                                                                                                                                                                                                        grid-row: 3 !important;
-                                                                                                                                                                                                                                                                width: 100% !important;
-                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                    
-        
-               
-  
-                                                                                                           
-                                                                                                                                                                                                                                                                                      
-
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                    
