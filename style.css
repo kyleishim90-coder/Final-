@@ -4095,5 +4095,23 @@ FLIP-ROWS so it loads after legacy inline styles. */
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             height: 34px !important;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }
+  /* Fix oversized Recent Results profile pictures */
+  .recent-result-avatar {
+      width: 48px !important;
+          height: 48px !important;
+              border-radius: 50% !important;
+                  overflow: hidden !important;
+                      flex-shrink: 0 !important;
+                      }
+
+                      .recent-result-avatar img {
+                          width: 100% !important;
+                              height: 100% !important;
+                                  max-width: 100% !important;
+                                      max-height: 100% !important;
+                                          object-fit: cover !important;
+                                              border-radius: 50% !important;
+                                                  display: block !important;
+                                                  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                                                                                                                                                                                     
