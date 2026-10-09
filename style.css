@@ -4112,6 +4112,18 @@ FLIP-ROWS so it loads after legacy inline styles. */
                                           object-fit: cover !important;
                                               border-radius: 50% !important;
                                                   display: block !important;
-                                                  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                  }           
+                                                  .recent-result-value {
+                                                        grid-column: 1 / -1;
+                                                            text-align: center;
+                                                                color: #ffffff;
+                                                                    font-size: 15px;
+                                                                        font-weight: 700;
+                                                                            margin-top: 4px;
+                                                                            }
+
+                                                                            .recent-result-row .recent-result-view {
+                                                                                grid-column: 1 / -1;
+                                                                            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                                                                                                                                                                                     
