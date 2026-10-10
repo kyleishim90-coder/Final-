@@ -4206,6 +4206,67 @@ FLIP-ROWS so it loads after legacy inline styles. */
                                                                                                                                                                                                                                                                                     .recent-result-modal-content {
                                                                                                                                                                                                                                                                                             padding: 20px 16px;
                                                                                                                                                                                                                                                                                                 }
-                                                                                                                                                                                                                                                                                                }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                }     
+  /* Recent Results popup: pet item rows */
+  #recent-result-modal-details .recent-modal-items {
+      list-style: none;
+          padding: 0;
+              margin: 8px 0 18px;
+              }
+
+              #recent-result-modal-details .recent-modal-item {
+                  display: flex;
+                      align-items: center;
+                          gap: 10px;
+                              min-height: 42px;
+                                  margin: 6px 0;
+                                      padding: 5px 8px;
+                                          border-radius: 8px;
+                                              background: rgba(255, 255, 255, 0.035);
+                                              }
+
+                                              /* Keep pet images small and prevent oversized images */
+                                              #recent-result-modal-details .recent-modal-pet-image {
+                                                  width: 32px !important;
+                                                      height: 32px !important;
+                                                          min-width: 32px !important;
+                                                              max-width: 32px !important;
+                                                                  min-height: 32px !important;
+                                                                      max-height: 32px !important;
+                                                                          object-fit: contain !important;
+                                                                              flex: 0 0 32px !important;
+                                                                                  display: block !important;
+                                                                                      border-radius: 5px;
+                                                                                      }
+
+                                                                                      #recent-result-modal-details .recent-modal-pet-placeholder {
+                                                                                          width: 32px;
+                                                                                              height: 32px;
+                                                                                                  min-width: 32px;
+                                                                                                      display: flex;
+                                                                                                          align-items: center;
+                                                                                                              justify-content: center;
+                                                                                                                  border-radius: 5px;
+                                                                                                                      background: rgba(255, 255, 255, 0.08);
+                                                                                                                          color: #aebdce;
+                                                                                                                              flex: 0 0 32px;
+                                                                                                                              }
+
+                                                                                                                              #recent-result-modal-details .recent-modal-item-text {
+                                                                                                                                  display: flex;
+                                                                                                                                      flex-direction: column;
+                                                                                                                                          min-width: 0;
+                                                                                                                                              gap: 2px;
+                                                                                                                                              }
+
+                                                                                                                                              #recent-result-modal-details .recent-modal-item-name {
+                                                                                                                                                  color: #ffffff;
+                                                                                                                                                      overflow-wrap: anywhere;
+                                                                                                                                                      }
+
+                                                                                                                                                      #recent-result-modal-details .recent-modal-item-value {
+                                                                                                                                                          color: #aebdce;
+                                                                                                                                                              font-size: 13px;
+                                                                                                                                                              }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                                                                                                                                                                                     
