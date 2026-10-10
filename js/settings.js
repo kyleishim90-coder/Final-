@@ -14,6 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     settingsClose.addEventListener("click", () => {
                                                             settingsPanel.classList.remove("open");
                                                                 });
+                                                                // Pet Values window
+                                                                const petValuesButton = document.getElementById("pet-values-settings");
+                                                                const petValuesWindow = document.getElementById("pet-values-window");
+                                                                const petValuesClose = document.getElementById("pet-values-close");
+
+                                                                if (petValuesButton && petValuesWindow && petValuesClose) {
+                                                                    petValuesButton.addEventListener("click", () => {
+                                                                            petValuesWindow.style.display = "flex";
+                                                                                });
+
+                                                                                    petValuesClose.addEventListener("click", () => {
+                                                                                            petValuesWindow.style.display = "none";
+                                                                                                });
+
+                                                                                                    petValuesWindow.addEventListener("click", (event) => {
+                                                                                                            if (event.target === petValuesWindow) {
+                                                                                                                        petValuesWindow.style.display = "none";
+                                                                                                                                }
+                                                                                                                                    });
+                                                                                                                                    }
                                                                 
 const profilePictureButton =
     document.getElementById("profile-picture-settings");
