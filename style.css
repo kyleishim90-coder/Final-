@@ -4375,6 +4375,65 @@ FLIP-ROWS so it loads after legacy inline styles. */
                                                                                                                                                                                                                                                                                     .pet-values-header h2 {
                                                                                                                                                                                                                                                                                             font-size: 21px;
                                                                                                                                                                                                                                                                                                 }
-                                                                                                                                                                                                                                                                                                }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                }             
+
+ /* ========================================
+    KYDNO KORE — PET VALUES LIST ROWS
+    ======================================== */
+
+    .pet-values-row {
+        display: flex;
+            align-items: center;
+                justify-content: space-between;
+                    gap: 12px;
+                        min-height: 52px;
+                            margin-bottom: 7px;
+                                padding: 7px 10px;
+                                    border: 1px solid rgba(120, 190, 255, 0.08);
+                                        border-radius: 10px;
+                                            background: rgba(255, 255, 255, 0.035);
+                                            }
+
+                                            .pet-values-pet {
+                                                display: flex;
+                                                    align-items: center;
+                                                        gap: 11px;
+                                                            min-width: 0;
+                                                                color: #f4f7fb;
+                                                                    font-size: 14px;
+                                                                        font-weight: 600;
+                                                                        }
+
+                                                                        .pet-values-image,
+                                                                        .pet-values-image-placeholder {
+                                                                            width: 36px;
+                                                                                height: 36px;
+                                                                                    min-width: 36px;
+                                                                                        flex: 0 0 36px;
+                                                                                            object-fit: contain;
+                                                                                                border-radius: 7px;
+                                                                                                }
+
+                                                                                                .pet-values-image-placeholder {
+                                                                                                    display: flex;
+                                                                                                        align-items: center;
+                                                                                                            justify-content: center;
+                                                                                                                background: rgba(255, 255, 255, 0.08);
+                                                                                                                    color: #aebdce;
+                                                                                                                    }
+
+                                                                                                                    .pet-values-amount {
+                                                                                                                        flex-shrink: 0;
+                                                                                                                            color: #8ecbff;
+                                                                                                                                font-size: 13px;
+                                                                                                                                    font-weight: 700;
+                                                                                                                                        text-align: right;
+                                                                                                                                        }
+
+                                                                                                                                        .pet-values-row:hover {
+                                                                                                                                            border-color: rgba(120, 190, 255, 0.25);
+                                                                                                                                                background: rgba(120, 190, 255, 0.06);
+                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                                                                                                                                                                                     
