@@ -3301,50 +3301,76 @@ function renderEmptyDuelFlips() {
     if (duelFlipsCount) duelFlipsCount.textContent = "0 active";
 }
 
+
 async function loadDuelFlips() {
     if (!duelActiveFlipsList) return;
 
-    const { data: flips, error } = await supabaseClient
-        .from("flips")
-        .select("*")
-        .eq("status", "waiting")
-        .order("created_at", { ascending: false });
+        duelActiveFlipsList.innerHTML = `
+                <div class="flips-empty-state">
+                            <p>Loading Duel Flips...</p>
+                                    </div>`;
 
-    if (error) {
-        console.error("Error loading duel flips:", error);
-        renderEmptyDuelFlips();
-        return;
-    }
+                                        const { data: duels, error } = await supabaseClient
+                                                .from("duel_flips")
+                                                        .select("id, host_id, host_side, start_mode, status, target_value, created_at")
+                                                                .eq("status", "waiting")
+                                                                        .order("created_at", { ascending: false });
 
-    const duelFlips = (flips || []).filter(isDuelFlip);
-    duelActiveFlipsList.innerHTML = "";
-    if (duelFlipsCount) duelFlipsCount.textContent = `${duelFlips.length} active`;
+                                                                            if (error) {
+                                                                                    console.error("Error loading Duel Flips:", error);
+                                                                                            renderEmptyDuelFlips();
+                                                                                                    return;
+                                                                                                        }
 
-    if (!duelFlips.length) {
-        renderEmptyDuelFlips();
-        return;
-    }
+                                                                                                            duelActiveFlipsList.innerHTML = "";
 
-    // Reuse the same visual card structure as normal flips, but only for
-    // records explicitly marked as duel flips.
-    const { data: { user: currentUser } } = await supabaseClient.auth.getUser();
-    duelFlips.forEach((flip) => {
-        const itemCount = Array.isArray(flip.items) ? flip.items.length : 0;
-        const flipCard = document.createElement("div");
-        flipCard.className = "active-flip-card";
-        flipCard.innerHTML =
-            window.createFlipRow(
-                    flip,
-                            currentUser
-                                );
-        if (currentUser?.id && flip.host_id === currentUser.id) {
-            const btn = flipCard.querySelector(".join-active-flip-button");
-            if (btn) { btn.disabled = true; btn.textContent = "Your Flip"; }
-        }
-        duelActiveFlipsList.appendChild(flipCard);
-    });
-}
+                                                                                                                if (duelFlipsCount) {
+                                                                                                                        duelFlipsCount.textContent = `${duels.length} active`;
+                                                                                                                            }
 
+                                                                                                                                if (!duels.length) {
+                                                                                                                                        renderEmptyDuelFlips();
+                                                                                                                                                return;
+                                                                                                                                                    }
+
+                                                                                                                                                        const { data: { user: currentUser } } =
+                                                                                                                                                                await supabaseClient.auth.getUser();
+
+                                                                                                                                                                    duels.forEach((duel) => {
+                                                                                                                                                                            const card = document.createElement("div");
+                                                                                                                                                                                    card.className = "active-flip-card";
+
+                                                                                                                                                                                            const side = duel.host_side === "tails" ? "Tails" : "Heads";
+                                                                                                                                                                                                    const mode = duel.start_mode === "manual"
+                                                                                                                                                                                                                ? "Manual start"
+                                                                                                                                                                                                                            : "Auto start";
+
+                                                                                                                                                                                                                                    card.innerHTML = `
+                                                                                                                                                                                                                                                <div style="padding:16px;">
+                                                                                                                                                                                                                                                                <h3>Duel Flip</h3>
+                                                                                                                                                                                                                                                                                <p>Host side: <strong>${side}</strong></p>
+                                                                                                                                                                                                                                                                                                <p>Target value:
+                                                                                                                                                                                                                                                                                                                    <strong>${Number(duel.target_value || 0).toLocaleString()}</strong>
+                                                                                                                                                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                                                                                                                                    <p>${mode}</p>
+                                                                                                                                                                                                                                                                                                                                                                    <p>Players: 1/4</p>
+                                                                                                                                                                                                                                                                                                                                                                                    <p style="font-size:12px;opacity:.7;">
+                                                                                                                                                                                                                                                                                                                                                                                                        Duel ID: ${duel.id}
+                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                            `;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    if (currentUser?.id === duel.host_id) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                const note = document.createElement("p");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            note.textContent = "You created this duel";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        note.style.padding = "0 16px 16px";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    card.appendChild(note);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    duelActiveFlipsList.appendChild(card);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 // Load flips when the page starts
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         loadActiveFlips();
