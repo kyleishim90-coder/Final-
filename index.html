@@ -1936,10 +1936,20 @@ Create one to get started!
      ===================================== -->
 <section class="live-flips-page hidden duel-flips-page" id="duel-flips-page">
 <div class="flips-lobby">
-<div class="flips-title-area">
-<h1>Join Duel Flips</h1>
-<p>Browse available duel flips and choose one to join.</p>
-</div>
+
+    <div class="flips-title-area">
+        <h1>Join Duel Flips</h1>
+            <p>Browse available duel flips and choose one to join.</p>
+
+                <button
+                        id="create-duel-flip-button"
+                                type="button"
+                                        style="margin-top:16px; padding:12px 20px; border:1px solid #4388ff; border-radius:10px; background:#174b91; color:white; font-weight:700; cursor:pointer;"
+                                            >
+                                                    + Create Duel
+                                                        </button>
+                                                        </div>
+                                                        
 </div>
 <div class="active-flips-panel">
 <div class="active-flips-header">
@@ -1962,6 +1972,81 @@ Create one to get started!
 </div>
 </div>
 </section>
+
+<!-- DUEL FLIP CREATION MODAL -->
+<div id="create-duel-modal" class="hidden" style="
+    position:fixed;
+        inset:0;
+            z-index:99998;
+                background:rgba(0,0,0,0.85);
+                    overflow-y:auto;
+                        padding:20px;
+                        ">
+                            <div style="
+                                    max-width:650px;
+                                            margin:30px auto;
+                                                    padding:22px;
+                                                            border:1px solid #4388ff;
+                                                                    border-radius:16px;
+                                                                            background:#111827;
+                                                                                    color:white;
+                                                                                        ">
+                                                                                                <button id="close-create-duel"
+                                                                                                            type="button"
+                                                                                                                        style="float:right;">
+                                                                                                                                    ✕
+                                                                                                                                            </button>
+
+                                                                                                                                                    <h2>Create a Duel Flip</h2>
+                                                                                                                                                            <p>Choose your side and select the pets you want to stake.</p>
+
+                                                                                                                                                                    <h3>Your Side</h3>
+                                                                                                                                                                            <div style="display:flex;gap:12px;">
+                                                                                                                                                                                        <button type="button" class="duel-side-option"
+                                                                                                                                                                                                        data-side="heads">🪙 Heads</button>
+                                                                                                                                                                                                                    <button type="button" class="duel-side-option"
+                                                                                                                                                                                                                                    data-side="tails">🪙 Tails</button>
+                                                                                                                                                                                                                                            </div>
+
+                                                                                                                                                                                                                                                    <h3>Start Mode</h3>
+                                                                                                                                                                                                                                                            <div style="display:flex;gap:12px;">
+                                                                                                                                                                                                                                                                        <button type="button" class="duel-mode-option"
+                                                                                                                                                                                                                                                                                        data-mode="auto">Auto Start</button>
+                                                                                                                                                                                                                                                                                                    <button type="button" class="duel-mode-option"
+                                                                                                                                                                                                                                                                                                                    data-mode="manual">Manual Start</button>
+                                                                                                                                                                                                                                                                                                                            </div>
+
+                                                                                                                                                                                                                                                                                                                                    <h3>Select Your Pets</h3>
+                                                                                                                                                                                                                                                                                                                                            <p id="duel-inventory-status">Inventory will load here.</p>
+
+                                                                                                                                                                                                                                                                                                                                                    <div id="duel-inventory-list"
+                                                                                                                                                                                                                                                                                                                                                                style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;">
+                                                                                                                                                                                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                <p>Selected pets: <strong id="duel-selected-count">0</strong></p>
+                                                                                                                                                                                                                                                                                                                                                                                        <p>Total value: <strong id="duel-selected-value">0</strong></p>
+
+                                                                                                                                                                                                                                                                                                                                                                                                <p id="duel-create-message" role="status"></p>
+
+                                                                                                                                                                                                                                                                                                                                                                                                        <button id="confirm-create-duel"
+                                                                                                                                                                                                                                                                                                                                                                                                                    type="button"
+                                                                                                                                                                                                                                                                                                                                                                                                                                disabled
+                                                                                                                                                                                                                                                                                                                                                                                                                                            style="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            width:100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding:14px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            margin-top:12px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            border:0;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            border-radius:10px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            background:#2563eb;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            color:white;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            font-weight:bold;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Create Duel &amp; Lock Pets
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <!-- END DUEL FLIP CREATION MODAL -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 <!-- CREATE / JOIN FLIP MODAL: kept at body level so hidden lobby sections cannot hide it -->
 <div class="create-flip-panel hidden" id="create-flip-panel">
 <div class="create-flip-box">
